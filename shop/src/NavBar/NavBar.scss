@@ -1,0 +1,111 @@
+#navbar-container{
+    height: 8vh;
+    width: 100vw;
+    position: sticky;
+    top: 0vh;
+    background-color: #0a7db1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    #left{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3vh;
+        img{
+            height: 100%;
+            cursor: pointer;
+        }
+        p{
+            cursor: pointer;
+        }
+        
+    }
+
+    #center{
+        width: 15%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input{
+            width: 100%;
+            padding: 1vh 1vw;
+            height: 20%;
+        }
+    }
+
+    #right{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+
+        .right-icons{
+            margin-left: 1vw;
+            height: 80%;
+            width: 30%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                height: 80%;
+            }
+        }
+
+        .drop-menu{
+            position: absolute;
+            background-color: white;
+            color: black;
+            border:2px solid black;
+            border-radius: 10px;
+            top: 7vh;
+            padding: 1vh 1vw;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-wrap: nowrap;
+
+            button,p{
+                padding: 1vh 1vw;
+                margin-bottom: 1vh;
+                transition: 0.4s;
+                border-radius: 5px;
+
+                &:hover{
+                    background-color: grey;
+                }
+            }
+        }
+
+        #list-button:hover #drop-menu-list{
+            display: flex;
+        }
+        #cart-button:hover #drop-menu-cart{
+            display: flex;
+        }
+        #profile-button:hover #drop-menu-profile{
+            display: flex;
+        }
+
+        #cart-amount{
+            position: absolute;
+            display: flex;
+            padding: 0.1vh 0.5vw;
+            background-color: white;
+            border-radius: 30px;
+            color: black;
+            top: 15%;
+            right: 30%;
+            font-size: 1.5vh;
+        }
+        
+    }
+}
