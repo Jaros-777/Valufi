@@ -3,8 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: white;
+  color: black;
   background-color: white;
+  font-size: 2vh;
+  --main-blue: #0a7db1;
   
 }
 
