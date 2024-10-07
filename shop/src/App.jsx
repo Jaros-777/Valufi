@@ -11,10 +11,11 @@ export const pageContext = createContext([]);
 function App() {
   const [productsList, setProductsList] = useState(ListOfProducts);
   const [cartList, setCartList] = useState([]);
+  const[cartListTotal, setCartListTotal] = useState(0)
   console.log("Cart Item ", cartList);
 
   return (
-    <pageContext.Provider value={{ productsList, cartList, setCartList }}>
+    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal }}>
       <BrowserRouter>
         <Routes>
           <Route index element={<HomePage />} />

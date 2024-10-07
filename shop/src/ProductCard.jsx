@@ -4,7 +4,7 @@ import wallet from "./assets/Products-Image/wallet.jpg";
 import { pageContext } from "./App";
 
 function ProductCard(props) {
-  const { cartList, setCartList } = useContext(pageContext);
+  const { cartList, setCartList,cartListTotal, setCartListTotal } = useContext(pageContext);
 
   function AddToCart(id,name,price,img) {
     const idInArray = cartList.findIndex((item) => item.id === id); 
@@ -16,7 +16,8 @@ function ProductCard(props) {
         itemToUpdate.count += 1;
       }
       setCartList(copyCartList);
-      console.log(copyCartList[id]);
+      // console.log(copyCartList[id]);
+      setCartListTotal((parseFloat(cartListTotal)+parseFloat(price)).toFixed(2))
     }
     else{
       const newItemCart = {
@@ -27,6 +28,7 @@ function ProductCard(props) {
         img: img,
       }
       setCartList([...cartList,newItemCart])
+      setCartListTotal((parseFloat(cartListTotal)+parseFloat(price)).toFixed(2))
     }
   }
 

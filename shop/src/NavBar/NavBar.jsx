@@ -8,10 +8,7 @@ import { useContext, useState } from "react";
 import { pageContext } from "../App";
 
 function NavBar() {
-
-  const {cartList} = useContext(pageContext)
-  const [cartVisible, setCartVisible] = useState(false)
-  
+  const { cartList, cartListTotal } = useContext(pageContext);
 
   return (
     <>
@@ -22,7 +19,9 @@ function NavBar() {
         </div>
         <div id="center">
           <input type="text" placeholder="Search..." />
-          <button><img src={Search} alt="Search" /></button>
+          <button>
+            <img src={Search} alt="Search" />
+          </button>
         </div>
         <div id="right">
           <div className="right-icons" id="list-button">
@@ -33,27 +32,32 @@ function NavBar() {
               <button>Car Part</button>
             </div>
           </div>
-          {/* onClick={()=>{setCartVisible(!cartVisible)}} */}
-          <div  className="right-icons" id="cart-button">
-            <img   src={Cart} alt="cart" />
+          <div className="right-icons" id="cart-button">
+            <img src={Cart} alt="cart" />
             <div id="cart-amount">
               <p>{cartList.length}</p>
             </div>
-            {/* style={{display: cartVisible ? "flex" : "none"}} */}
-            <div   id="drop-menu-cart">
-              {cartList.length === 0? <p style={{fontSize:"3vh", marginBottom:"2vh"}}>Empty</p> :
-            cartList.map((e)=>(
-                <div className="cart-item" key={e.id} >
-                  <div id="left-cart"><img src={e.img} alt="" /> </div>
-                  <div id="center-cart">
-                    <div style={{width:"10%"}}>{e.count}x</div>
-                    <div style={{margin: "0vh 1vw"}}>{e.name}</div>
+            <div id="drop-menu-cart">
+              {cartList.length === 0 ? (
+                <p style={{ fontSize: "3vh", marginBottom: "2vh" }}>Empty</p>
+              ) : (
+                cartList.map((e) => (
+                  <div className="cart-item" key={e.id}>
+                    <div id="left-cart">
+                      <img src={e.img} alt="" />{" "}
                     </div>
-                  <div id="right-cart">{e.price} $</div>
+                    <div id="center-cart">
+                      <div style={{ width: "10%" }}>{e.count}x</div>
+                      <div style={{ margin: "0vh 1vw" }}>{e.name}</div>
+                    </div>
+                    <div id="right-cart">{e.price} $</div>
                   </div>
-              )) }
-              <p style={{borderTop: "2px solid black", width:"100%", textAlign: "center"}}>Total: 0$</p>
-              <button>Checkout</button>
+                ))
+              )}
+              <div id="checkout">
+                <button>Checkout</button>
+                <p>Total: {cartListTotal} $</p>
+              </div>
             </div>
           </div>
           <div className="right-icons" id="profile-button">

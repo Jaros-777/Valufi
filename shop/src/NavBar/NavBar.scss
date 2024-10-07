@@ -125,7 +125,7 @@
             border: 2px solid black;
             color: white;
             border-radius: 10px;
-            padding: 3vh 1vw;
+            padding: 3vh 2vw;
             top: 6vh;
             right: -5vw;
             width: 30vw;
@@ -146,7 +146,6 @@
                 #left-cart{
                     width: 25%;
                     height: 100%;
-                    background-color: grey;
                     img{
                         height: 100%;
                         width: 100%;
@@ -180,6 +179,16 @@
                 &:hover{
                     background-color: grey;
                 }
+            }
+
+            #checkout{
+                border-top: 2px solid black;
+                width: 100%;
+                padding-top: 1vh;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                font-size: 3vh;
             }
         }
 
@@ -239,6 +248,7 @@
             .drop-menu{
                 top: 5vh;
                 right: 0vw;
+                padding: 1vh 4vw;
     
             }
             .right-icons{
