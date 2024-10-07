@@ -6,14 +6,16 @@ import List from "./Assets/icon-list.png";
 import Search from "./Assets/icon-search.png";
 import { useContext, useState } from "react";
 import { pageContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
   const { cartList, cartListTotal } = useContext(pageContext);
+  const navigate = useNavigate()
 
   return (
     <>
       <div id="navbar-container">
-        <div id="left">
+        <div onClick={()=>{navigate("/")}} id="left">
           <img src={Logo} alt="" />
           <p>Valufi</p>
         </div>

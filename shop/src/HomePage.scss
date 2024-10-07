@@ -4,6 +4,7 @@
     height: 30vh;
     background-color: blue;
     color: white;
+    margin-top: 8vh;
 
     img{
         height: 100%;
@@ -40,7 +41,7 @@
   }
 @media (max-width: 950px) {
     #big-advert{
-        height: 20vh;
+        height: 25vh;
     }
     #home-page-container{
     
@@ -52,6 +53,7 @@
 @media (max-width: 600px) {
     #big-advert{
         height: 12vh;
+        margin-top: 6vh;
     }
     #home-page-container{
     

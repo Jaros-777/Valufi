@@ -2,26 +2,93 @@
 
 #product-container{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
-    font-size: 10vh;
     height: 200vh;
+    font-size: 4vh;
+    margin-top: 8vh;
 
     #product-left{
         width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 4vh;
+        border-right: 2px solid black;
         img{
             width: 80%;
-            padding: 2vh 2vw;
+            padding: 2vh 2vw 6vh 2vw;
+            border-bottom: 2px solid black;
         }
     }
     #product-right{
         display: flex;
         justify-content: center;
-        align-items: center;
         flex-direction: column;
-        width: 50%;
-        position: sticky;
-        top: 0vh;
-        background-color: grey;
+        width: 40%;
+        position: fixed;
+        top: 13vh;
+        right: 0vw;
+        
+
+        #product-name{
+            font-size: 7vh;
+        }
+
+        
+        #count-add-section{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 30%;
+            background-color: var(--main-blue);
+            border-radius: 10px;
+            color: white;
+            margin-top: 4vh;
+            
+            p{
+                border-right: 2px solid white;
+                width: 30%;
+                text-align: center;
+                font-size: 3vh;
+            }
+            button{
+                background-color: var(--main-blue);
+                color: white;
+                padding: 1.5vh 1vw;
+                font-size: 2vh;
+                transition: 0.4s;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+                &:hover{
+                    background-color: grey;
+                }
+
+            }
+    
+        }
+        #payments{
+            margin-top: 3vh;
+            font-size: 2.5vh;
+            img{
+                margin-top: 2vh;
+            }
+
+        }
+        .shipping{
+            margin-top: 3vh;
+            font-size: 2.5vh;
+            display: flex;
+            border: 2px solid black;
+            width: 70%;
+            padding: 1vh 1vw;
+            border-radius: 10px;
+            img{
+                width: 15%;
+                margin-right: 3vw;
+            }
+        }
     }
 }
