@@ -5,6 +5,8 @@ import { createContext, useState } from "react";
 
 import { ListOfProducts } from "./ProductList";
 import HomePage from "./HomePage";
+import NoPage from "./NoPage";
+import Product from "./Product";
 
 export const pageContext = createContext([]);
 
@@ -18,9 +20,9 @@ function App() {
     <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal }}>
       <BrowserRouter>
         <Routes>
-          <Route index element={<HomePage />} />
-          {/* <Route path="blogs" element={<Blogs />} /> */}
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route index path="/" element={<HomePage />} />
+          <Route path="/product/:productId" element={<Product />} />
+          <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
     </pageContext.Provider>

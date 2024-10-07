@@ -8,7 +8,6 @@ import { pageContext } from "./App";
 function HomePage() {
 
   const { productsList } = useContext(pageContext);
-  // console.log(productsList[1])
 
 
   return (

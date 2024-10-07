@@ -1,0 +1,27 @@
+
+
+#product-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 10vh;
+    height: 200vh;
+
+    #product-left{
+        width: 50%;
+        img{
+            width: 80%;
+            padding: 2vh 2vw;
+        }
+    }
+    #product-right{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        position: sticky;
+        top: 0vh;
+        background-color: grey;
+    }
+}

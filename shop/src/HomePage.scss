@@ -21,7 +21,7 @@
     #products-container{
         display: grid;
         width: 90%;
-        padding: 3vh 3vw;
+        padding: 3vh 0vw;
         grid-template-columns: repeat(4,1fr);
         gap: 10vh 2vw;
     }

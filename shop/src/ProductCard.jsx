@@ -1,9 +1,10 @@
 import "./ProductCard.scss";
 import { useContext } from "react";
-import wallet from "./assets/Products-Image/wallet.jpg";
 import { pageContext } from "./App";
+import { useNavigate } from 'react-router-dom';
 
 function ProductCard(props) {
+  const navigate = useNavigate();
   const { cartList, setCartList,cartListTotal, setCartListTotal } = useContext(pageContext);
 
   function AddToCart(id,name,price,img) {
@@ -16,7 +17,6 @@ function ProductCard(props) {
         itemToUpdate.count += 1;
       }
       setCartList(copyCartList);
-      // console.log(copyCartList[id]);
       setCartListTotal((parseFloat(cartListTotal)+parseFloat(price)).toFixed(2))
     }
     else{
@@ -34,7 +34,7 @@ function ProductCard(props) {
 
   return (
     <>
-      <div id="product-card-container">
+      <div onClick={()=>{navigate(`/product/${props.id}`)}}  id="product-card-container">
         <img src={props.img} alt="Picture of product" />
         <div id="product-card-info">
           <p style={{ fontWeight: "bold" ,height:"50%" }}>{props.name}</p>

@@ -1,0 +1,25 @@
+
+#no-page-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-image: url( "./assets/NoPageImg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+
+    button{
+        position: absolute;
+        top: 35vw;
+        right: 43vw;
+        transform: translate(-50%,-50%);
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: white;
+        padding: 1vw 1vw;
+
+        &:hover{
+            background-color: grey;
+        }
+    }
+}
