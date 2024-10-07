@@ -9,6 +9,7 @@
     flex-direction: column;
     height: 50vh;
     background-color: rgb(218, 218, 218);
+    cursor: pointer;
     img{
         height: 60%;
         width: 90%;
@@ -35,3 +36,21 @@
     }
     
 }
+
+@media (max-width: 600px) {
+    #product-card-container{
+        padding: 2vh;
+        height: 30vh;
+
+        #product-card-info{
+            height: 40%;
+            font-size: 2vh;
+            margin-top: 2vh;
+
+            button{
+                padding: 1.5vh 1vw;
+                font-size: 1.5vh;
+            }
+        }
+    }
+  }

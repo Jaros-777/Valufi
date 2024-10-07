@@ -35,7 +35,7 @@ function ProductCard(props) {
       <div id="product-card-container">
         <img src={props.img} alt="Picture of product" />
         <div id="product-card-info">
-          <p style={{ fontWeight: "bold" ,height:"50%", }}>{props.name}</p>
+          <p style={{ fontWeight: "bold" ,height:"50%" }}>{props.name}</p>
           <p style={{height:"20%",  marginBottom:"1vh"}}>{props.price}$</p>
           <button
             onClick={() => {

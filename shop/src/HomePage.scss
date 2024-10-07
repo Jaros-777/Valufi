@@ -27,3 +27,41 @@
     }
 }
 
+@media (max-width: 1250px) {
+    #big-advert{
+        height: 25vh;
+    }
+    #home-page-container{
+    
+        #products-container{
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+  }
+@media (max-width: 950px) {
+    #big-advert{
+        height: 20vh;
+    }
+    #home-page-container{
+    
+        #products-container{
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+  }
+@media (max-width: 600px) {
+    #big-advert{
+        height: 12vh;
+    }
+    #home-page-container{
+    
+        #products-container{
+            display: grid;
+            width: 95%;
+            padding: 3vh 3vw;
+            grid-template-columns: repeat(2,1fr);
+            gap: 2vh 2vw;
+        }
+    }
+  }
+
