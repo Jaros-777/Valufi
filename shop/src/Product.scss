@@ -5,35 +5,35 @@
     justify-content: space-between;
     align-items: flex-start;
     height: 200vh;
-    font-size: 4vh;
+    font-size: 3vh;
     margin-top: 8vh;
 
     #product-left{
-        width: 50%;
+        width: 60%;
         height: 100%;
         display: flex;
-        align-items: flex-start;
-        justify-content: center;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
         padding-top: 4vh;
         border-right: 2px solid black;
         img{
-            width: 80%;
+            width: 50%;
             padding: 2vh 2vw 6vh 2vw;
-            border-bottom: 2px solid black;
         }
     }
     #product-right{
         display: flex;
         justify-content: center;
         flex-direction: column;
-        width: 40%;
+        width: 35%;
         position: fixed;
         top: 13vh;
         right: 0vw;
         
 
         #product-name{
-            font-size: 7vh;
+            font-size: 5vh;
         }
 
         
@@ -51,7 +51,6 @@
                 border-right: 2px solid white;
                 width: 30%;
                 text-align: center;
-                font-size: 3vh;
             }
             button{
                 background-color: var(--main-blue);
@@ -59,8 +58,10 @@
                 padding: 1.5vh 1vw;
                 font-size: 2vh;
                 transition: 0.4s;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
+                // border-top-right-radius: 10px;
+                // border-bottom-right-radius: 10px;
+                border-radius: 10px;
+                width: 100%;
 
                 &:hover{
                     background-color: grey;
@@ -71,7 +72,8 @@
         }
         #payments{
             margin-top: 3vh;
-            font-size: 2.5vh;
+            font-size: 2vh;
+            font-weight: bold;
             img{
                 margin-top: 2vh;
             }
@@ -79,8 +81,9 @@
         }
         .shipping{
             margin-top: 3vh;
-            font-size: 2.5vh;
+            font-size: 2vh;
             display: flex;
+            align-items: center;
             border: 2px solid black;
             width: 70%;
             padding: 1vh 1vw;

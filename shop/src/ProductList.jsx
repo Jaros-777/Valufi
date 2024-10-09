@@ -44,5 +44,5 @@ export const ListOfProducts=[
         img: smartwatchImg,
         category: "accessories",
 
-    },
+    }
 ]

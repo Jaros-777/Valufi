@@ -7,12 +7,39 @@ import NavBar from "./NavBar/NavBar";
 import Payment from "./assets/payments.png";
 import InpostKurier from "./assets/inpost-kurier.png";
 import InpostPaczkomat from "./assets/inpost-paczkomat.png";
+import FastDelivery from "./assets/fast-delivery.png";
 
 function Product() {
-  const { productsList } = useContext(pageContext);
-  const { productId } = useParams();
+  const { productsList, cartList, setCartList,cartListTotal, setCartListTotal } = useContext(pageContext);
+  const { productId} = useParams();
 
   const product = productsList.find((e) => e.id === parseInt(productId));
+
+ 
+  function AddToCart(id,name,price,img) {
+    const idInArray = cartList.findIndex((item) => item.id === id); 
+
+    if (idInArray !== -1) {
+      const copyCartList = [...cartList];
+      const itemToUpdate = copyCartList[idInArray];
+      if (itemToUpdate) {
+        itemToUpdate.count += 1;
+      }
+      setCartList(copyCartList);
+      setCartListTotal((parseFloat(cartListTotal)+parseFloat(price)).toFixed(2))
+    }
+    else{
+      const newItemCart = {
+        id:id,
+        count:1,
+        name: name,
+        price: price,
+        img: img,
+      }
+      setCartList([...cartList,newItemCart])
+      setCartListTotal((parseFloat(cartListTotal)+parseFloat(price)).toFixed(2))
+    }
+  }
 
   return (
     <>
@@ -20,21 +47,24 @@ function Product() {
       <div id="product-container">
         <div id="product-left">
           <img src={product.img} alt="product Image" />
+          <div style={{width:"90%", borderBottom:"2px solid black"}}></div>
+          <p>Description</p>
         </div>
         <div id="product-right">
           <p id="product-name">{product.name}</p>
           <p>opinion</p>
           <p id="product-price">{product.price} $</p>
           <div id="count-add-section">
-            <p>1</p>
-            <button>Add to cart</button>
+            <button onClick={()=>{AddToCart(product.id, product.name, product.price,product.img)}}>Add to cart</button>
           </div>
           <div id="payments">
             <p>Possible payments</p>
             <img src={Payment} alt="Payments icons" />
           </div>
 
-          <p style={{fontSize:"2.5vh", marginTop:"4vh"}}>Shipping methods</p>
+          <p style={{ fontSize: "2vh", marginTop: "4vh", fontWeight:"bold" }}>
+            Shipping methods
+          </p>
           <div className="shipping">
             <img src={InpostKurier} alt="" />
             <p>Inpost courier - 0.00$</p>
@@ -42,6 +72,10 @@ function Product() {
           <div className="shipping">
             <img src={InpostPaczkomat} alt="" />
             <p>Inpost parcel lockers 24/7 - 0.00$</p>
+          </div>
+          <div className="shipping" style={{border:"none"}}>
+            <img src={FastDelivery} alt="" />
+            <p>Shipping within 24 hours</p>
           </div>
         </div>
       </div>

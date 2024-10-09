@@ -9,11 +9,12 @@
     flex-direction: column;
     height: 50vh;
     background-color: rgb(218, 218, 218);
-    cursor: pointer;
+    
     img{
         height: 60%;
         width: 90%;
         object-fit: contain;
+        cursor: pointer;
     }
     #product-card-info{
         height: 40%;
@@ -22,6 +23,12 @@
         flex-direction: column;
         font-size: 3vh;
         margin-top: 2vh;
+        p:first-child{
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     
         button{
             background-color: var(--main-blue);
