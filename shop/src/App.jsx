@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route index path="/" element={<HomePage />} />
           <Route path="/product/:productId" element={<Product />} />
-          <Route path="/:productCategory" element={<FilterProductPage />} />
+          <Route path="/category/:productCategory" element={<FilterProductPage />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

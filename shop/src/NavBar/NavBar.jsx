@@ -6,7 +6,7 @@ import List from "./Assets/icon-list.png";
 import Search from "./Assets/icon-search.png";
 import { useContext, useState } from "react";
 import { pageContext } from "../App";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function NavBar() {
   const { cartList, cartListTotal } =
@@ -40,24 +40,22 @@ function NavBar() {
             <img src={List} alt="List" />
             <div className="drop-menu" id="drop-menu-list">
               <button
-                onClick={() => {
-                  navigate(`/electronics`)
-                  window.location.reload()
-                }}
-              >
+              onClick={() => {
+                navigate(`/category/electronics`)
+                window.location.reload()
+              }}>
                 Electronics
               </button>
               <button
-                onClick={() => {
-                  navigate(`/accessories`)
-                  window.location.reload()
-                }}
-              >
+              onClick={() => {
+                navigate(`/category/accessories`)
+                window.location.reload()
+              }}>
                 Accessories
               </button>
-              <button
+              <button 
                 onClick={() => {
-                  navigate(`/jewelry`)
+                  navigate(`/category/jewelry`)
                   window.location.reload()
                 }}
               >
