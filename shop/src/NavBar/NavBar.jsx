@@ -9,13 +9,23 @@ import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function NavBar() {
-  const { cartList, cartListTotal } = useContext(pageContext);
-  const navigate = useNavigate()
+  const { cartList, cartListTotal } =
+    useContext(pageContext);
+  const navigate = useNavigate();
+
+  function navigateCategory(category) {
+    navigate(`/product/${category}`);
+  }
 
   return (
     <>
       <div id="navbar-container">
-        <div onClick={()=>{navigate("/")}} id="left">
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+          id="left"
+        >
           <img src={Logo} alt="" />
           <p>Valufi</p>
         </div>
@@ -29,9 +39,30 @@ function NavBar() {
           <div className="right-icons" id="list-button">
             <img src={List} alt="List" />
             <div className="drop-menu" id="drop-menu-list">
-              <button>Electronics</button>
-              <button>Shoes</button>
-              <button>Car Part</button>
+              <button
+                onClick={() => {
+                  navigate(`/electronics`)
+                  window.location.reload()
+                }}
+              >
+                Electronics
+              </button>
+              <button
+                onClick={() => {
+                  navigate(`/accessories`)
+                  window.location.reload()
+                }}
+              >
+                Accessories
+              </button>
+              <button
+                onClick={() => {
+                  navigate(`/jewelry`)
+                  window.location.reload()
+                }}
+              >
+                Jewelry
+              </button>
             </div>
           </div>
           <div className="right-icons" id="cart-button">

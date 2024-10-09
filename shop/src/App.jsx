@@ -7,6 +7,7 @@ import { ListOfProducts } from "./ProductList";
 import HomePage from "./HomePage";
 import NoPage from "./NoPage";
 import Product from "./Product";
+import FilterProductPage from "./FilterProductsPage";
 
 export const pageContext = createContext([]);
 
@@ -14,7 +15,7 @@ function App() {
   const [productsList, setProductsList] = useState(ListOfProducts);
   const [cartList, setCartList] = useState([]);
   const[cartListTotal, setCartListTotal] = useState(0)
-  console.log("Cart Item ", cartList);
+  // console.log("Cart Item ", cartList);
 
   return (
     <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal }}>
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route index path="/" element={<HomePage />} />
           <Route path="/product/:productId" element={<Product />} />
+          <Route path="/:productCategory" element={<FilterProductPage />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

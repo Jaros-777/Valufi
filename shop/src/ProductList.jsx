@@ -26,7 +26,7 @@ export const ListOfProducts=[
         name: "Iphone Cable",
         price: 5.99,
         img: IphoneCableImg,
-        category: "accessories",
+        category: "electronics",
 
     },
     {
@@ -34,7 +34,7 @@ export const ListOfProducts=[
         name: "Vintage Ring",
         price: 14.99,
         img: ringImg,
-        category: "accessories",
+        category: "jewelry",
 
     },
     {
@@ -42,7 +42,7 @@ export const ListOfProducts=[
         name: "Smartwatch",
         price: 199.99,
         img: smartwatchImg,
-        category: "accessories",
+        category: "electronics",
 
     }
 ]
