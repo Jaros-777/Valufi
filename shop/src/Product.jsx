@@ -48,7 +48,7 @@ function Product() {
         <div id="product-left">
           <img src={product.img} alt="product Image" />
           <div style={{width:"90%", borderBottom:"2px solid black"}}></div>
-          <p>Description</p>
+          <p id="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, maiores! Possimus voluptates veritatis adipisci dignissimos iusto ipsa! Quaerat consectetur, at veritatis iure porro totam aperiam tenetur sint voluptas, nam sit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum natus, vitae voluptate odio nostrum rem. Molestiae minus maxime voluptatibus voluptas quisquam est nihil blanditiis tempora optio assumenda? Iste, cum. Vitae! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis ducimus quos fuga? Laboriosam quae odit nulla animi deserunt sint possimus, ipsam quod culpa a nostrum voluptas labore, consequuntur ab sed.</p>
         </div>
         <div id="product-right">
           <p id="product-name">{product.name}</p>

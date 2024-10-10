@@ -8,6 +8,7 @@ import HomePage from "./HomePage";
 import NoPage from "./NoPage";
 import Product from "./Product";
 import FilterProductPage from "./FilterProductsPage";
+import Cart from "./Cart";
 
 export const pageContext = createContext([]);
 
@@ -24,6 +25,7 @@ function App() {
           <Route index path="/" element={<HomePage />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/category/:productCategory" element={<FilterProductPage />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

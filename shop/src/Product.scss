@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: 200vh;
     font-size: 3vh;
     margin-top: 8vh;
 
@@ -20,6 +19,11 @@
         img{
             width: 50%;
             padding: 2vh 2vw 6vh 2vw;
+        }
+
+        #description{
+            padding: 5vh 0vw;
+            width: 80%;
         }
     }
     #product-right{
@@ -95,3 +99,42 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    #product-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 3vh;
+        margin-top: 8vh;
+
+        #product-left{
+            width: 100%;
+            border-right: none;
+            img{
+                width: 80%;
+            }
+    
+            #description{
+                width: 80%;
+                position: absolute;
+                top: 135vh;
+
+            }
+        }
+
+        #product-right{
+            width: 90%;
+            position: static;
+            
+    
+            #payments{
+                img{
+                    width: 100%;
+                }
+    
+            }
+        }
+    }
+  }

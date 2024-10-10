@@ -4,10 +4,12 @@ import { Route } from 'react-router-dom'
 import "./NoPage.scss"
 
 function NoPage() {
+
+  const navigate=useNavigate()
   return (
     <>
       <div id="no-page-container">
-        <button onClick={()=>{history.push("/")}}>Go Home</button>
+        <button onClick={()=>{navigate("/")}}>Go Home</button>
       </div>
     </>
   );

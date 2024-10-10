@@ -17,6 +17,8 @@ function NavBar() {
     navigate(`/product/${category}`);
   }
 
+
+
   return (
     <>
       <div id="navbar-container">
@@ -42,29 +44,26 @@ function NavBar() {
               <button
               onClick={() => {
                 navigate(`/category/electronics`)
-                window.location.reload()
               }}>
                 Electronics
               </button>
               <button
               onClick={() => {
                 navigate(`/category/accessories`)
-                window.location.reload()
               }}>
                 Accessories
               </button>
               <button 
                 onClick={() => {
                   navigate(`/category/jewelry`)
-                  window.location.reload()
                 }}
               >
                 Jewelry
               </button>
             </div>
           </div>
-          <div className="right-icons" id="cart-button">
-            <img src={Cart} alt="cart" />
+          <div  className="right-icons" id="cart-button">
+            <img onClick={() => {navigate("/cart")}} src={Cart} alt="cart" />
             <div id="cart-amount">
               <p>{cartList.length}</p>
             </div>
