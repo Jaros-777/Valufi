@@ -16,10 +16,10 @@ function App() {
   const [productsList, setProductsList] = useState(ListOfProducts);
   const [cartList, setCartList] = useState([]);
   const[cartListTotal, setCartListTotal] = useState(0)
-  // console.log("Cart Item ", cartList);
+  const[searchItem, setSearchItem]= useState("")
 
   return (
-    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal }}>
+    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal, searchItem, setSearchItem }}>
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<HomePage />} />

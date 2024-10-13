@@ -10,7 +10,6 @@ function FilterProductPage() {
 
   const { productsList } = useContext(pageContext);
   const { productCategory} = useParams();
-  const [currentCategory, setCurrentCategory] = useState(productCategory)
   const [viewProductsList, setViewProductList] = useState(productsList.filter((item) => item.category === productCategory))
 
 

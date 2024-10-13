@@ -8,14 +8,14 @@ import smartwatchImg from "./assets/Products-Image/smartwatch.jpg"
 export const ListOfProducts=[
     {
         id:1,
-        name: "Wallet",
+        name: "Wallet, crocodile leather",
         price: 29.99,
         img: WalletImg,
         category: "accessories",
     },
     {
         id:2,
-        name: "Bag",
+        name: "Bag, blue amazing fabric",
         price: 69.99,
         img: bagImg,
         category: "accessories",
@@ -23,7 +23,7 @@ export const ListOfProducts=[
     },
     {
         id:3,
-        name: "Iphone Cable",
+        name: "Iphone Cable - 20W Super Fast Excelent Quality",
         price: 5.99,
         img: IphoneCableImg,
         category: "electronics",

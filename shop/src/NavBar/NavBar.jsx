@@ -9,12 +9,13 @@ import { pageContext } from "../App";
 import { useNavigate, Link } from "react-router-dom";
 
 function NavBar() {
-  const { cartList, cartListTotal } =
+  const { cartList, cartListTotal,searchItem, setSearchItem } =
     useContext(pageContext);
   const navigate = useNavigate();
 
-  function navigateCategory(category) {
-    navigate(`/product/${category}`);
+
+  function searchItemByName(){
+
   }
 
 
@@ -32,8 +33,8 @@ function NavBar() {
           <p>Valufi</p>
         </div>
         <div id="center">
-          <input type="text" placeholder="Search..." />
-          <button>
+          <input type="text" placeholder="Search..." value={searchItem} onChange={(e)=>{setSearchItem(e.target.value)}} />
+          <button onClick={searchItemByName}>
             <img src={Search} alt="Search" />
           </button>
         </div>
@@ -64,7 +65,7 @@ function NavBar() {
           </div>
           <div  className="right-icons" id="cart-button">
             <img onClick={() => {navigate("/cart")}} src={Cart} alt="cart" />
-            <div id="cart-amount">
+            <div onClick={() => {navigate("/cart")}} id="cart-amount">
               <p>{cartList.length}</p>
             </div>
             <div id="drop-menu-cart">
@@ -85,7 +86,7 @@ function NavBar() {
                 ))
               )}
               <div id="checkout">
-                <button>Checkout</button>
+                <button onClick={()=>{navigate("/cart")}}>Checkout</button>
                 <p>Total: {cartListTotal} $</p>
               </div>
             </div>

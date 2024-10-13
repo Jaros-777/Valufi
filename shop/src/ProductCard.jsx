@@ -37,7 +37,10 @@ function ProductCard(props) {
       <div  id="product-card-container">
         <img onClick={()=>{navigate(`/product/${props.id}`), window.scrollTo(0,0)}} src={props.img} alt="Picture of product" />
         <div id="product-card-info">
-          <p onClick={()=>{navigate(`/product/${props.id}`), window.scrollTo(0,0)}} style={{ fontWeight: "bold" ,height:"50%" }}>{props.name}</p>
+          <div className="product-name" onClick={()=>{navigate(`/product/${props.id}`), window.scrollTo(0,0)}} style={{ fontWeight: "bold" ,height:"50%" }}>
+            {props.name}
+            <div className="full-text">{props.name}</div>
+            </div>
           <p style={{height:"20%",  marginBottom:"1vh"}}>{props.price}$</p>
           <button
             onClick={() => {
