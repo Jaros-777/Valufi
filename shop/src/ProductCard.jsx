@@ -9,7 +9,6 @@ function ProductCard(props) {
 
   function AddToCart(id,name,price,img) {
     const idInArray = cartList.findIndex((item) => item.id === id); 
-
     if (idInArray !== -1) {
       const copyCartList = [...cartList];
       const itemToUpdate = copyCartList[idInArray];
