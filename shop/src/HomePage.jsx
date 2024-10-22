@@ -2,6 +2,7 @@ import NavBar from "./NavBar/NavBar.jsx";
 import "./HomePage.scss";
 import Advert from "./assets/Adverts/Advert1.png";
 import ProductCard from "./ProductCard.jsx";
+import Footer from "./Footer.jsx";
 import { useContext } from "react";
 import { pageContext } from "./App";
 
@@ -23,6 +24,7 @@ function HomePage() {
           ))}
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

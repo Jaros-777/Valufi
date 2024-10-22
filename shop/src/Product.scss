@@ -31,7 +31,7 @@
         justify-content: center;
         flex-direction: column;
         width: 35%;
-        position: fixed;
+        position: sticky;
         top: 13vh;
         right: 0vw;
         
@@ -112,14 +112,16 @@
         #product-left{
             width: 100%;
             border-right: none;
+            position: relative;
             img{
                 width: 80%;
             }
     
             #description{
                 width: 80%;
-                position: absolute;
-                top: 135vh;
+                position: relative;
+                margin-top: 0vh;
+                top: 0vh;
 
             }
         }

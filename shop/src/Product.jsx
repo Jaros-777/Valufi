@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { pageContext } from "./App";
 import { useParams } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
+import Footer from "./Footer";
 
 import Payment from "./assets/payments.png";
 import InpostKurier from "./assets/inpost-kurier.png";
@@ -79,6 +80,7 @@ function Product() {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

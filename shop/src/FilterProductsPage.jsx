@@ -1,4 +1,5 @@
 import NavBar from "./NavBar/NavBar.jsx";
+import Footer from "./Footer.jsx";
 import "./HomePage.scss";
 import Advert from "./assets/Adverts/Advert1.png";
 import ProductCard from "./ProductCard.jsx";
@@ -30,6 +31,7 @@ function FilterProductPage() {
           ))}
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import NavBar from "./NavBar/NavBar.jsx";
+import Footer from "./Footer.jsx";
 import "./Cart.scss";
 
 import { useContext, useEffect } from "react";
@@ -117,6 +118,7 @@ function Cart() {
           <button>Go to payment</button>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

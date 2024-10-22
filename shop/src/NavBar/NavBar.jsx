@@ -4,21 +4,22 @@ import Cart from "./Assets/icon-cart.png";
 import Profile from "./Assets/icon-profile.png";
 import List from "./Assets/icon-list.png";
 import Search from "./Assets/icon-search.png";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { pageContext } from "../App";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
-  const { cartList, cartListTotal,searchItem, setSearchItem } =
-    useContext(pageContext);
+  const {
+    cartList,
+    cartListTotal,
+    searchItem,
+    setSearchItem,
+    loggedID,
+    userList,
+  } = useContext(pageContext);
   const navigate = useNavigate();
 
-
-  function searchItemByName(){
-
-  }
-
-
+  function searchItemByName() {}
 
   return (
     <>
@@ -33,7 +34,14 @@ function NavBar() {
           <p>Valufi</p>
         </div>
         <div id="center">
-          <input type="text" placeholder="Search..." value={searchItem} onChange={(e)=>{setSearchItem(e.target.value)}} />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchItem}
+            onChange={(e) => {
+              setSearchItem(e.target.value);
+            }}
+          />
           <button onClick={searchItemByName}>
             <img src={Search} alt="Search" />
           </button>
@@ -43,29 +51,42 @@ function NavBar() {
             <img src={List} alt="List" />
             <div className="drop-menu" id="drop-menu-list">
               <button
-              onClick={() => {
-                navigate(`/category/electronics`)
-              }}>
+                onClick={() => {
+                  navigate(`/category/electronics`);
+                }}
+              >
                 Electronics
               </button>
               <button
-              onClick={() => {
-                navigate(`/category/accessories`)
-              }}>
+                onClick={() => {
+                  navigate(`/category/accessories`);
+                }}
+              >
                 Accessories
               </button>
-              <button 
+              <button
                 onClick={() => {
-                  navigate(`/category/jewelry`)
+                  navigate(`/category/jewelry`);
                 }}
               >
                 Jewelry
               </button>
             </div>
           </div>
-          <div  className="right-icons" id="cart-button">
-            <img onClick={() => {navigate("/cart")}} src={Cart} alt="cart" />
-            <div onClick={() => {navigate("/cart")}} id="cart-amount">
+          <div className="right-icons" id="cart-button">
+            <img
+              onClick={() => {
+                navigate("/cart");
+              }}
+              src={Cart}
+              alt="cart"
+            />
+            <div
+              onClick={() => {
+                navigate("/cart");
+              }}
+              id="cart-amount"
+            >
               <p>{cartList.length}</p>
             </div>
             <div id="drop-menu-cart">
@@ -86,7 +107,13 @@ function NavBar() {
                 ))
               )}
               <div id="checkout">
-                <button onClick={()=>{navigate("/cart")}}>Checkout</button>
+                <button
+                  onClick={() => {
+                    navigate("/cart");
+                  }}
+                >
+                  Checkout
+                </button>
                 <p>Total: {cartListTotal} $</p>
               </div>
             </div>
@@ -94,9 +121,13 @@ function NavBar() {
           <div className="right-icons" id="profile-button">
             <img src={Profile} alt="profile" />
             <div className="drop-menu" id="drop-menu-profile">
-              <p>Order</p>
-              <p>Setting</p>
-              <p>Log Out</p>
+              {loggedID !== -1 ?
+                (<div>
+                  <p>Order</p>
+                  <p>Setting</p>
+                  <p>Log Out</p>
+                </div>): <p>Login</p>
+               } 
             </div>
           </div>
         </div>
