@@ -1,39 +1,59 @@
 
 
 #product-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 59% 37%;
+    align-items: start;
     font-size: 3vh;
     margin-top: 8vh;
+    width: 100%;
+    
 
-    #product-left{
-        width: 60%;
-        height: 100%;
+    #product-img{
+        grid-column-start: 1;
+        grid-row-start: 1;
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        padding-top: 0vh;
+        border-bottom: 2px solid black;
+        img{
+            width: 60%;
+            height: 90%;
+            object-fit: contain;
+        }
+    }
+
+
+    #product-description{
+        grid-column-start: 1;
+        grid-row-start: 2;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         flex-direction: column;
-        padding-top: 4vh;
-        border-right: 2px solid black;
-        img{
-            width: 50%;
-            padding: 2vh 2vw 6vh 2vw;
-        }
+        padding-top: 0vh;
+        
 
         #description{
-            padding: 5vh 0vw;
+            padding: 0vh 0vw;
             width: 80%;
         }
     }
     #product-right{
+        grid-column-start: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
         display: flex;
-        justify-content: center;
         flex-direction: column;
-        width: 35%;
+        width: 100%;
+        height: 89vh;
         position: sticky;
-        top: 13vh;
+        top: 8vh;
         right: 0vw;
+        border-left: 2px solid black;
+        padding: 3vh 0vw 0vh 3vw;
         
 
         #product-name{
@@ -46,6 +66,7 @@
             justify-content: flex-end;
             align-items: center;
             width: 30%;
+            
             background-color: var(--main-blue);
             border-radius: 10px;
             color: white;
@@ -62,8 +83,6 @@
                 padding: 1.5vh 1vw;
                 font-size: 2vh;
                 transition: 0.4s;
-                // border-top-right-radius: 10px;
-                // border-bottom-right-radius: 10px;
                 border-radius: 10px;
                 width: 100%;
 
@@ -78,13 +97,15 @@
             margin-top: 3vh;
             font-size: 2vh;
             font-weight: bold;
+            padding-bottom: 2vh;
             img{
+                width: 70%;
                 margin-top: 2vh;
             }
 
         }
         .shipping{
-            margin-top: 3vh;
+            margin-top: 2vh;
             font-size: 2vh;
             display: flex;
             align-items: center;
@@ -94,6 +115,8 @@
             border-radius: 10px;
             img{
                 width: 15%;
+                height: 100%;
+                object-fit: contain;
                 margin-right: 3vw;
             }
         }
@@ -102,41 +125,51 @@
 
 @media (max-width: 600px) {
     #product-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-size: 3vh;
-        margin-top: 8vh;
+        grid-template-columns: 100%;
 
-        #product-left{
+        #product-img{
+            grid-column-start: 1;
+            grid-row-start: 1;
             width: 100%;
-            border-right: none;
-            position: relative;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 0vh;
+            border-bottom: 2px solid black;
             img{
-                width: 80%;
+                width: 70%;
+                height: 90%;
+                object-fit: contain;
             }
+        }
+
+        #product-description{
+            grid-column-start: 1;
+            grid-row-start: 3;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            padding-top: 0vh;
+            
     
             #description{
+                padding: 0vh 0vw;
                 width: 80%;
-                position: relative;
-                margin-top: 0vh;
-                top: 0vh;
-
             }
         }
 
         #product-right{
-            width: 90%;
+            grid-column-start: 1;
+            grid-row-start: 2;
+            height: auto;
             position: static;
-            
-    
-            #payments{
-                img{
-                    width: 100%;
-                }
-    
-            }
+            top: auto;
+            right: auto;
+            border-left: none;
+            padding: 3vh 5vw 5vh 5vw;
+            width: 95%;
         }
     }
+
   }
