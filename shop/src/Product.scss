@@ -123,9 +123,11 @@
     }
 }
 
-@media (max-width: 600px) {
+
+@media (max-width: 950px) {
     #product-container{
         grid-template-columns: 100%;
+        margin-top: 13vh;
 
         #product-img{
             grid-column-start: 1;
@@ -170,6 +172,15 @@
             padding: 3vh 5vw 5vh 5vw;
             width: 95%;
         }
+    }
+
+  }
+
+  @media (max-width: 600px) {
+    #product-container{
+        grid-template-columns: 100%;
+        margin-top: 8vh;
+
     }
 
   }

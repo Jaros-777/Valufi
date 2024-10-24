@@ -11,6 +11,7 @@ import Product from "./Product";
 import FilterProductPage from "./FilterProductsPage";
 import Cart from "./Cart";
 import Login from "./Profile/Login";
+import Register from "./Profile/Register";
 
 export const pageContext = createContext([]);
 
@@ -24,15 +25,9 @@ function App() {
   const [loggedID, setLoggedId] = useState(-1)
 
 
-  // const user = UserList.map((u)=> u.id === loggedID)[0]
-  // console.log(user)
-  // const userIndex = UserList.findIndex((u)=> u.id === loggedID)
-  // console.log(UserList[userIndex].name)
-
-
 
   return (
-    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal, searchItem, setSearchItem,loggedID,userList }}>
+    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal, searchItem, setSearchItem, loggedID, setLoggedId, userList, setUserList }}>
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<HomePage />} />
@@ -40,6 +35,7 @@ function App() {
           <Route path="/category/:productCategory" element={<FilterProductPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

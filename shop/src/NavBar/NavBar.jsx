@@ -15,11 +15,18 @@ function NavBar() {
     searchItem,
     setSearchItem,
     loggedID,
-    userList,
+    setLoggedId
   } = useContext(pageContext);
   const navigate = useNavigate();
 
   function searchItemByName() {}
+
+
+
+  function LogOut(){
+    setLoggedId(false);
+    window.location.reload();
+  }
 
   return (
     <>
@@ -73,7 +80,7 @@ function NavBar() {
               </button>
             </div>
           </div>
-          <div className="right-icons" id="cart-button">
+          <div  className="right-icons" id="cart-button">
             <img
               onClick={() => {
                 navigate("/cart");
@@ -125,11 +132,15 @@ function NavBar() {
                 (<div>
                   <p>Order</p>
                   <p>Setting</p>
-                  <p>Log Out</p>
-                </div>): <p>Login</p>
+                  <p onClick={LogOut} >Log Out</p>
+                </div>): <p onClick={() => {
+                    navigate("/login");
+                  }}>Login</p>
                } 
             </div>
+            
           </div>
+          <p id="userName" style={{marginLeft:"2vw"}}>{loggedID.name}</p>
         </div>
       </div>
     </>

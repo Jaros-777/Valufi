@@ -194,17 +194,28 @@
         }
 
         #cart-amount{
-            position: absolute;
+            position: relative;
             display: flex;
             padding: 0.1vh 0.5vw;
             background-color: white;
             border-radius: 30px;
             color: black;
-            top: 15%;
+            // top: 15%;
+            // right: 30%;
+            top: -15%;
             right: 30%;
             font-size: 1.5vh;
         }
         
+    }
+    
+}
+
+@media (max-width: 900px){
+    #navbar-container{
+        #userName{
+            display: none;
+        }
     }
 }
 
