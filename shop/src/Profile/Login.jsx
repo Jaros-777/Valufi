@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const {userList, setLoggedId } = useContext(pageContext)
+  const {userList, setLoggedId, setCartList } = useContext(pageContext)
   const navigate = useNavigate()
 
   const[userEmail, setUserEmail] = useState("");
@@ -25,7 +25,11 @@ function Login() {
     passwordIn? setWrondPass(false): setWrondPass(true)
 
     if(passwordIn){
-      setLoggedId(userList.find(user => (user.password === userPassword && user.email === userEmail)))
+      const user = userList.find(user => (user.password === userPassword && user.email === userEmail))
+      setLoggedId(user)
+      setCartList(user.cartList)
+      console.log(user.cartList)
+
       navigate("/")
     }
   }

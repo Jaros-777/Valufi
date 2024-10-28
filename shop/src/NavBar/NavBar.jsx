@@ -4,7 +4,7 @@ import Cart from "./Assets/icon-cart.png";
 import Profile from "./Assets/icon-profile.png";
 import List from "./Assets/icon-list.png";
 import Search from "./Assets/icon-search.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
@@ -15,11 +15,19 @@ function NavBar() {
     searchItem,
     setSearchItem,
     loggedID,
-    setLoggedId
+    setLoggedId,
   } = useContext(pageContext);
   const navigate = useNavigate();
 
-  function searchItemByName() {}
+  function handleSearchSubmit(event){
+    if(event.key === 'Enter'){
+      searchItemByName();
+    }
+  }
+
+  function searchItemByName() {
+      navigate(`/category/search/${searchItem}`);
+  }
 
 
 
@@ -45,6 +53,7 @@ function NavBar() {
             type="text"
             placeholder="Search..."
             value={searchItem}
+            onKeyDown={handleSearchSubmit}
             onChange={(e) => {
               setSearchItem(e.target.value);
             }}

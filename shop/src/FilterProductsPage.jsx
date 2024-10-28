@@ -9,13 +9,19 @@ import { useParams } from "react-router-dom";
 
 function FilterProductPage() {
 
-  const { productsList } = useContext(pageContext);
+  const { productsList, searchItem } = useContext(pageContext);
   const { productCategory} = useParams();
   const [viewProductsList, setViewProductList] = useState(productsList.filter((item) => item.category === productCategory))
 
 
   useEffect(()=>{
-    setViewProductList(productsList.filter((item) => item.category === productCategory))
+
+    if(window.location.href.split("/")[4] === "search"){
+    setViewProductList(productsList.filter((item)=> item.name.toLowerCase().includes(searchItem.toLowerCase())))
+    }else{
+      setViewProductList(productsList.filter((item) => item.category === productCategory))
+    }
+
   },[productsList,productCategory])
 
   return (
