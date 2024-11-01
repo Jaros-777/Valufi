@@ -32,7 +32,8 @@ function NavBar() {
 
 
   function LogOut(){
-    setLoggedId(false);
+    setLoggedId(-1);
+    localStorage.setItem('user', -1)
     window.location.reload();
   }
 
@@ -137,7 +138,7 @@ function NavBar() {
           <div className="right-icons" id="profile-button">
             <img src={Profile} alt="profile" />
             <div className="drop-menu" id="drop-menu-profile">
-              {loggedID !== -1 ?
+              {(loggedID !== -1 ) ?
                 (<div>
                   <p>Order</p>
                   <p>Setting</p>

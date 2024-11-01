@@ -33,6 +33,7 @@ function Register() {
 
       setUserList([...userList, newUser])
       setLoggedId(newUser)
+      localStorage.setItem('user', newUser.id)
       navigate("/")
     }
   }

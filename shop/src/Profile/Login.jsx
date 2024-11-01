@@ -30,6 +30,8 @@ function Login() {
       setCartList(user.cartList)
       console.log(user.cartList)
 
+      localStorage.setItem('user', user.id)
+
       navigate("/")
     }
   }
