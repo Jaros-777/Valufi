@@ -14,8 +14,9 @@ function NavBar() {
     cartListTotal,
     searchItem,
     setSearchItem,
-    loggedID,
-    setLoggedId,
+    isLogged,
+    setIsLogged,
+    supabase
   } = useContext(pageContext);
   const navigate = useNavigate();
 
@@ -31,10 +32,11 @@ function NavBar() {
 
 
 
-  function LogOut(){
-    setLoggedId(-1);
-    localStorage.setItem('user', -1)
-    window.location.reload();
+  async function LogOut(){
+    setIsLogged(false);
+    // localStorage.setItem('userToken', null)
+    await supabase.auth.signOut();
+    // window.location.reload();
   }
 
   return (
@@ -138,7 +140,7 @@ function NavBar() {
           <div className="right-icons" id="profile-button">
             <img src={Profile} alt="profile" />
             <div className="drop-menu" id="drop-menu-profile">
-              {(loggedID !== -1 ) ?
+              {(isLogged ) ?
                 (<div>
                   <p>Order</p>
                   <p>Setting</p>
@@ -150,7 +152,7 @@ function NavBar() {
             </div>
             
           </div>
-          <p id="userName" style={{marginLeft:"2vw"}}>{loggedID.name}</p>
+          {/* <p id="userName" style={{marginLeft:"2vw"}}>{loggedID.name}</p> */}
         </div>
       </div>
     </>

@@ -10,31 +10,64 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const {userList, setLoggedId, setCartList } = useContext(pageContext)
+  const { setIsLogged, setCartList, supabase, setUser } = useContext(pageContext)
   const navigate = useNavigate()
 
   const[userEmail, setUserEmail] = useState("");
   const[userPassword, setUserPassword] = useState("");
-  const[wrongPas, setWrondPass] = useState(false);
+  const[wrongPas, setWrongPass] = useState(false);
 
 
-  function Login(){
+  // function Login(){
     
-    const passwordIn = (userList.find(user => (user.password === userPassword && user.email === userEmail)) !== undefined)
+  //   const passwordIn = (userList.find(user => (user.password === userPassword && user.email === userEmail)) !== undefined)
     
-    passwordIn? setWrondPass(false): setWrondPass(true)
+  //   passwordIn? setWrondPass(false): setWrondPass(true)
 
-    if(passwordIn){
-      const user = userList.find(user => (user.password === userPassword && user.email === userEmail))
-      setLoggedId(user)
-      setCartList(user.cartList)
-      console.log(user.cartList)
+  //   if(passwordIn){
+  //     const user = userList.find(user => (user.password === userPassword && user.email === userEmail))
+  //     setLoggedId(user)
+  //     setCartList(user.cartList)
+  //     console.log(user.cartList)
 
-      localStorage.setItem('user', user.id)
+  //     // localStorage.setItem('user', user.id)
+
+  //     navigate("/")
+  //   }
+  // }
+
+  // const getSession = async () => {
+  //   const { data, error } = await supabase.auth.getSession();
+  
+  //   if (error) {
+  //     console.error(error);
+  //   } else {
+  //     console.log(data.session.access_token); // Tutaj znajdziesz informacje o sesji
+  //   }
+  // };
+
+  const Login = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: userEmail,
+        password: userPassword,
+      });
+      if (error) throw error;
+      // console.log(data.user);
+      setUser(data.user)
+      setIsLogged(true);
+      setWrongPass(false)
+      // getSession();
+      // localStorage.setItem('userToken', getSession())
+
+      
 
       navigate("/")
+    } catch (error) {
+      // alert(error);
+      setWrongPass(true)
     }
-  }
+  };
 
   return (
     <>

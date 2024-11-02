@@ -10,33 +10,47 @@ import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const { userList, setUserList, setLoggedId } = useContext(pageContext);
+  const { supabase } = useContext(pageContext);
   const navigate = useNavigate();
 
   const [userNewEmail, setNewUserEmail] = useState("");
   const [userNewPassword, setNewUserPassword] = useState("");
   const [userNewName, setNewUserName] = useState("");
 
-  function Register() {
-    if (
-      userNewEmail !== null &&
-      userNewPassword !== null &&
-      userNewName !== null
-    ) {
-      const newUser = {
-        id: uuidv4(),
-        name: userNewName,
-        password: userNewPassword,
-        email: userNewEmail,
-        cartList: [],
-      };
+  // function Register() {
+  //   if (
+  //     userNewEmail !== null &&
+  //     userNewPassword !== null &&
+  //     userNewName !== null
+  //   ) {
+  //     const newUser = {
+  //       id: uuidv4(),
+  //       name: userNewName,
+  //       password: userNewPassword,
+  //       email: userNewEmail,
+  //       cartList: [],
+  //     };
 
-      setUserList([...userList, newUser])
-      setLoggedId(newUser)
-      localStorage.setItem('user', newUser.id)
-      navigate("/")
+  //     setUserList([...userList, newUser])
+  //     setLoggedId(newUser)
+  //     // localStorage.setItem('user', newUser.id)
+  //     navigate("/")
+  //   }
+  // }
+
+  const Register = async () => {
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        // name: userNewName,
+        email: userNewEmail,
+        password: userNewPassword,
+      });
+      if (error) throw error;
+      navigate("/login")
+    } catch (error) {
+      alert(error);
     }
-  }
+  };
 
   return (
     <>
@@ -44,7 +58,7 @@ function Register() {
       <div id="login-container">
         <div id="login">
           <p>Register</p>
-          <div className="login-input">
+          {/* <div className="login-input">
             <input
               type="text"
               placeholder="Name"
@@ -53,7 +67,7 @@ function Register() {
               }}
             />
             <img src={ProfileIcon} alt="Email Icon" />
-          </div>
+          </div> */}
           <div className="login-input">
             <input
               type="text"
