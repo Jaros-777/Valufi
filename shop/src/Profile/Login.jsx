@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const { setIsLogged, setCartList, supabase, setUser,cartListTotal, setCartListTotal } = useContext(pageContext)
+  const {  setIsLogged, setCartList, supabase, setUser,cartListTotal, setCartListTotal, fetchCartListData } = useContext(pageContext)
   const navigate = useNavigate()
 
   const[userEmail, setUserEmail] = useState("");
@@ -18,51 +18,17 @@ function Login() {
   const[wrongPas, setWrongPass] = useState(false);
 
 
-  // function Login(){
-    
-  //   const passwordIn = (userList.find(user => (user.password === userPassword && user.email === userEmail)) !== undefined)
-    
-  //   passwordIn? setWrondPass(false): setWrondPass(true)
 
-  //   if(passwordIn){
-  //     const user = userList.find(user => (user.password === userPassword && user.email === userEmail))
-  //     setLoggedId(user)
-  //     setCartList(user.cartList)
-  //     console.log(user.cartList)
-
-  //     // localStorage.setItem('user', user.id)
-
-  //     navigate("/")
-  //   }
-  // }
-
-  // const getSession = async () => {
-  //   const { data, error } = await supabase.auth.getSession();
+  const getSession = async () => {
+    const { data, error } = await supabase.auth.getSession();
   
-  //   if (error) {
-  //     console.error(error);
-  //   } else {
-  //     console.log(data.session.access_token); // Tutaj znajdziesz informacje o sesji
-  //   }
-  // };
-  
-  const fetchCartListData = async () => {
-    const { data, error } = await supabase
-      .from('ValufiUsersAccount')
-      .select("*")
-
     if (error) {
       console.error(error);
     } else {
-      setCartList(data[0].cartList)
-      if(data[0].cartList.length > 0){
-        // console.log("sum", (data[0].cartList.reduce((total, value) => total + parseFloat(value.price), 0).toFixed(2)))
-        // console.log(cartListTotal)
-      setCartListTotal(data[0].cartList.reduce((total, value) => total + parseFloat(value.price), 0).toFixed(2))
-      }
-      
+      return(data.session.access_token)
     }
   };
+  
 
 
   const Login = async () => {
@@ -72,20 +38,13 @@ function Login() {
         password: userPassword,
       });
       if (error) throw error;
-      // console.log(data.user);
       setUser(data.user)
       setIsLogged(true);
       setWrongPass(false)
-      // console.log("login ", data.user)
       fetchCartListData();
-      // getSession();
-      // localStorage.setItem('userToken', getSession())
-
-      
-
-      // navigate("/")
+      localStorage.setItem('userToken', JSON.stringify( data.session))
+      navigate("/")
     } catch (error) {
-      // alert(error);
       setWrongPass(true)
     }
   };

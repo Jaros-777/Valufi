@@ -3,7 +3,7 @@ import "./App.css";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import supabase from "./supabaseClient";
 
 import { ListOfProducts } from "./ProductList";
 import { UserList } from "./UserList";
@@ -18,24 +18,14 @@ import Register from "./Profile/Register";
 export const pageContext = createContext([]);
 
 function App() {
-  const supabaseUrl = import.meta.env.VITE_APP_SUPABASE_URL
-  const supabaseKey = import.meta.env.VITE_APP_SUPABASE_KEY
-  
-  const supabase = createClient(
-    supabaseUrl,supabaseKey
-  );
-
-  
   const [productsList, setProductsList] = useState([]);
   const [cartList, setCartList] = useState([]);
-  const [cartListTotal, setCartListTotal] = useState(0)
-  const [searchItem, setSearchItem]= useState("")
+  const [cartListTotal, setCartListTotal] = useState(0);
+  const [searchItem, setSearchItem] = useState("");
 
-  const [userList, setUserList] = useState(UserList)
-  const [isLogged, setIsLogged] = useState(false)// loggedId
-  const [user, setUser] = useState(null)
-
-  
+  const [userList, setUserList] = useState(UserList);
+  const [isLogged, setIsLogged] = useState(false); // loggedId
+  const [user, setUser] = useState(null);
 
   // useEffect(()=>{
   //   const loggedUserID = localStorage.getItem('user')
@@ -51,58 +41,116 @@ function App() {
 
   // },[loggedID])
 
-  // const getSession = async () => {
-  //   const { data, error } = await supabase.auth.getSession();
-  
-  //   if (error) {
-  //     console.error(error);
-  //   } else {
-  //     console.log(data.session.access_token); // Tutaj znajdziesz informacje o sesji
-  //   }
-  // };
-
-  // useEffect(()=>{
-  //   const token = localStorage.getItem('userToken');
-  //   if(token){
-  //     supabase.auth.setSession({access_token: getSession()})
-  //   }
-  // },[])
-
-  // console.log("User: ",user)
-  
-  
-  // getSession();
-
   const fetchProductsData = async () => {
-    const { data, error } = await supabase
-      .from('ValufiProducts')
-      .select('*')
+    const { data, error } = await supabase.from("ValufiProducts").select("*");
 
     if (error) {
       console.error(error);
     } else {
       setProductsList(data);
       // const [productsList, setProductsList] = useState(data);
-      return data
+      return data;
       // console.log(data)
     }
   };
-    
-  useEffect(()=>{
-    fetchProductsData();
-    
-  },[])
-  // console.log("list APP ", productsList)
 
+  useEffect(() => {
+    fetchProductsData();
+  }, []);
+
+  const fetchCartListData = async () => {
+    const { data, error } = await supabase
+      .from("ValufiUsersAccount")
+      .select("*");
+
+    if (error) {
+      console.error(error);
+    } else {
+      setCartList(data[0].cartList);
+      setUser(data[0])
+      if (data[0].cartList.length > 0) {
+        setCartListTotal(
+          data[0].cartList
+            .reduce((total, value) => total + parseFloat(value.price), 0)
+            .toFixed(2)
+        );
+      }
+    }
+  };
+
+  const getSession = async () => {
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) {
+      console.error(error);
+    } else {
+      return data.session;
+    }
+  };
+
+  useEffect(() => {
+
+    const restoreSession = async () => {
+      const session = localStorage.getItem("userToken");
+      if (session) {
+        const { data, error } = await supabase.auth.setSession(
+          JSON.parse(session)
+        );
+        if (error) {
+          console.error(error);
+        } else {
+          setUser(data.user);
+          setIsLogged(true);
+        }
+      }
+    };
+    restoreSession()
+  }, []);
+
+  useEffect(() => {
+    if (isLogged) {
+      getSession().then((session) => {
+        if (session) {
+          localStorage.setItem("userToken", JSON.stringify(session));
+          fetchCartListData()
+        }
+      });
+    }
+  }, [isLogged]);
 
   return (
-    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal, searchItem, setSearchItem, isLogged, setIsLogged, userList, setUserList,user, setUser, supabase, fetchProductsData }}>
+    <pageContext.Provider
+      value={{
+        productsList,
+        cartList,
+        setCartList,
+        cartListTotal,
+        setCartListTotal,
+        searchItem,
+        setSearchItem,
+        isLogged,
+        setIsLogged,
+        userList,
+        setUserList,
+        user,
+        setUser,
+        supabase,
+        fetchProductsData,
+        fetchCartListData
+      }}
+    >
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<HomePage />} />
           <Route path="/product/:productId" element={<Product />} />
-          <Route path="/category/:productCategory" element={<FilterProductPage />} />
-          <Route path="/category/search/:productCategory" element={<FilterProductPage />} />
+          <Route
+            path="/category/:productCategory"
+            element={<FilterProductPage />}
+          />
+          <Route
+            path="/category/search/:productCategory"
+            element={<FilterProductPage />}
+          />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

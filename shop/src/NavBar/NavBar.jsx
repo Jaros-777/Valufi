@@ -11,7 +11,9 @@ import { useNavigate } from "react-router-dom";
 function NavBar() {
   const {
     cartList,
+    setCartList,
     cartListTotal,
+    setCartListTotal,
     searchItem,
     setSearchItem,
     isLogged,
@@ -31,11 +33,13 @@ function NavBar() {
   }
 
 
-
   async function LogOut(){
     setIsLogged(false);
-    // localStorage.setItem('userToken', null)
+    localStorage.removeItem('userToken')
     await supabase.auth.signOut();
+    setCartList([])
+    setCartListTotal(0)
+
     // window.location.reload();
   }
 
