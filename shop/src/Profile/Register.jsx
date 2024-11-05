@@ -10,7 +10,7 @@ import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const { supabase } = useContext(pageContext);
+  const { supabase, isLogged } = useContext(pageContext);
   const navigate = useNavigate();
 
   const [userNewEmail, setNewUserEmail] = useState("");
@@ -38,15 +38,34 @@ function Register() {
   //   }
   // }
 
+  const addToDatabase = async(newUserId)=>{
+    try {
+      const { data, error } = await supabase.from("ValufiUsersAccount")
+      .insert([
+        {userId:newUserId,
+         cartList: [],
+        name: userNewName}
+      ])
+      if (error) throw error;
+      
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+
   const Register = async () => {
     try {
       const { data, error } = await supabase.auth.signUp({
-        // name: userNewName,
         email: userNewEmail,
         password: userNewPassword,
       });
       if (error) throw error;
+      addToDatabase(data.user.id)
       navigate("/login")
+
+
+
     } catch (error) {
       alert(error);
     }
@@ -55,10 +74,11 @@ function Register() {
   return (
     <>
       <NavBar></NavBar>
+      {!isLogged? 
       <div id="login-container">
         <div id="login">
           <p>Register</p>
-          {/* <div className="login-input">
+          <div className="login-input">
             <input
               type="text"
               placeholder="Name"
@@ -67,7 +87,7 @@ function Register() {
               }}
             />
             <img src={ProfileIcon} alt="Email Icon" />
-          </div> */}
+          </div>
           <div className="login-input">
             <input
               type="text"
@@ -93,6 +113,11 @@ function Register() {
           </button>
         </div>
       </div>
+      : 
+      <div style={{marginTop:"12vh" ,height:"59vh", color:"black", display:"flex", justifyContent:"center", alignItems:"center"}}>
+        <p style={{fontWeight:"bold"}}>You are logged already</p>
+      </div>
+      }
       <Footer></Footer>
     </>
   );

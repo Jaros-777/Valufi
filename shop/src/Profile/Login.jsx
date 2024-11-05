@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const {  setIsLogged, setCartList, supabase, setUser,cartListTotal, setCartListTotal, fetchCartListData } = useContext(pageContext)
+  const { isLogged, setIsLogged, supabase, setUser, fetchCartListData } = useContext(pageContext)
   const navigate = useNavigate()
 
   const[userEmail, setUserEmail] = useState("");
@@ -18,16 +18,6 @@ function Login() {
   const[wrongPas, setWrongPass] = useState(false);
 
 
-
-  const getSession = async () => {
-    const { data, error } = await supabase.auth.getSession();
-  
-    if (error) {
-      console.error(error);
-    } else {
-      return(data.session.access_token)
-    }
-  };
   
 
 
@@ -38,7 +28,6 @@ function Login() {
         password: userPassword,
       });
       if (error) throw error;
-      setUser(data.user)
       setIsLogged(true);
       setWrongPass(false)
       fetchCartListData();
@@ -52,6 +41,7 @@ function Login() {
   return (
     <>
       <NavBar></NavBar>
+      {!isLogged? 
       <div id="login-container">
         <div id="login">
           <p>Login</p>
@@ -78,6 +68,11 @@ function Login() {
           </p>
         </div>
       </div>
+      : 
+      <div style={{marginTop:"12vh" ,height:"59vh", color:"black", display:"flex", justifyContent:"center", alignItems:"center"}}>
+        <p style={{fontWeight:"bold"}}>You are logged already</p>
+      </div>
+      }
       <Footer></Footer>
     </>
   );

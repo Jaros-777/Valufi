@@ -17,7 +17,7 @@ function Cart() {
     
     const copyCartList = [...cartList];
     const itemToUpdate = copyCartList[idInArray];
-    console.log(itemToUpdate.count)
+    // console.log(itemToUpdate.count)
 
     setCartListTotal(
       (parseFloat(cartListTotal) - (parseFloat(itemToUpdate.count) * parseFloat(price))).toFixed(2)

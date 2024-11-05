@@ -18,7 +18,8 @@ function NavBar() {
     setSearchItem,
     isLogged,
     setIsLogged,
-    supabase
+    supabase,
+    user
   } = useContext(pageContext);
   const navigate = useNavigate();
 
@@ -39,10 +40,9 @@ function NavBar() {
     await supabase.auth.signOut();
     setCartList([])
     setCartListTotal(0)
+    window.location.reload()
 
-    // window.location.reload();
   }
-
   return (
     <>
       <div id="navbar-container">
@@ -119,7 +119,7 @@ function NavBar() {
                 cartList.map((e) => (
                   <div className="cart-item" key={e.id}>
                     <div id="left-cart">
-                      <img src={e.img} alt="" />{" "}
+                      <img src={e.img} alt="" />
                     </div>
                     <div id="center-cart">
                       <div style={{ width: "10%" }}>{e.count}x</div>
@@ -156,7 +156,11 @@ function NavBar() {
             </div>
             
           </div>
-          {/* <p id="userName" style={{marginLeft:"2vw"}}>{loggedID.name}</p> */}
+          {user?
+          <p id="userName" style={{marginLeft:"2vw"}}>{user.name}</p>
+          : null
+          }
+          
         </div>
       </div>
     </>

@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import supabase from "./supabaseClient";
 
-import { ListOfProducts } from "./ProductList";
 import { UserList } from "./UserList";
 import HomePage from "./HomePage";
 import NoPage from "./NoPage";
@@ -23,24 +22,11 @@ function App() {
   const [cartListTotal, setCartListTotal] = useState(0);
   const [searchItem, setSearchItem] = useState("");
 
-  const [userList, setUserList] = useState(UserList);
+  const [userList, setUserList] = useState([]);
   const [isLogged, setIsLogged] = useState(false); // loggedId
   const [user, setUser] = useState(null);
 
-  // useEffect(()=>{
-  //   const loggedUserID = localStorage.getItem('user')
-  //   const loggedUser = userList.find((e)=> e.id == parseInt(loggedUserID))
-
-  //   if(loggedUser === undefined){
-  //     setLoggedId(-1)
-  //   }else{
-  //     setLoggedId(loggedUser)
-  //   }
-  //   // console.log("Obecnie zalogowany",loggedID)
-  //   // console.log("localstoarge",loggedUser)
-
-  // },[loggedID])
-
+  //load products from database
   const fetchProductsData = async () => {
     const { data, error } = await supabase.from("ValufiProducts").select("*");
 
@@ -48,9 +34,7 @@ function App() {
       console.error(error);
     } else {
       setProductsList(data);
-      // const [productsList, setProductsList] = useState(data);
       return data;
-      // console.log(data)
     }
   };
 
@@ -58,6 +42,7 @@ function App() {
     fetchProductsData();
   }, []);
 
+  //load cartList from database
   const fetchCartListData = async () => {
     const { data, error } = await supabase
       .from("ValufiUsersAccount")
@@ -78,16 +63,8 @@ function App() {
     }
   };
 
-  const getSession = async () => {
-    const { data, error } = await supabase.auth.getSession();
-
-    if (error) {
-      console.error(error);
-    } else {
-      return data.session;
-    }
-  };
-
+  
+  //after refresh page data is loaded
   useEffect(() => {
 
     const restoreSession = async () => {
@@ -99,13 +76,24 @@ function App() {
         if (error) {
           console.error(error);
         } else {
-          setUser(data.user);
+          // setUser(data.user);
+          
           setIsLogged(true);
         }
       }
     };
     restoreSession()
   }, []);
+
+  const getSession = async () => {
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) {
+      console.error(error);
+    } else {
+      return data.session;
+    }
+  };
 
   useEffect(() => {
     if (isLogged) {
@@ -117,6 +105,28 @@ function App() {
       });
     }
   }, [isLogged]);
+
+ //update cartList to dataBase
+  const uploadCartList = async()=>{
+    try {
+      const { data, error } = await supabase.from("ValufiUsersAccount")
+      .update([
+        {cartList: cartList}
+      ])
+      .eq('userId', user.userId);
+      if (error) throw error;
+      
+    } catch (error) {
+      // alert(error);
+      //after reflesh page user should get an error, but... programm read first id (id of the user in database) and the next a userId. Error is becaouse "id" not working
+    }
+  }
+
+  useEffect(()=>{
+    if(isLogged && cartList!== undefined){
+      uploadCartList()
+    }
+  },[cartList,setCartList, isLogged])
 
   return (
     <pageContext.Provider
