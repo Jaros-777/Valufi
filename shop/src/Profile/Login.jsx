@@ -55,13 +55,13 @@ function Login() {
           </div>
           {wrongPas ?  <p id="incorrect" >Incorrect email or password</p> : <p></p>}
           
-          <div id="login-options">
+          {/* <div id="login-options">
             <div id="remember">
               <input type="checkbox" />
               <p>Remeber Me</p>
             </div>
-            <p>Forgot password?</p>
-          </div>
+            <p onClick={()=>navigate("/forgotpassword")} >Forgot password?</p> !!! you must configure SMTP in supabase !!!
+          </div> */}
           <button onClick={Login}>Login</button>
           <p id="login-register">
             Don't have an account? <span onClick={()=>{navigate("/register")}}>Register</span>

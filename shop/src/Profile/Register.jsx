@@ -5,7 +5,6 @@ import EmailLogo from "./icon-email.png";
 import PasswordIcon from "./icon-password.png";
 import ProfileIcon from "./icon-profile.png";
 import { useContext, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
@@ -17,26 +16,6 @@ function Register() {
   const [userNewPassword, setNewUserPassword] = useState("");
   const [userNewName, setNewUserName] = useState("");
 
-  // function Register() {
-  //   if (
-  //     userNewEmail !== null &&
-  //     userNewPassword !== null &&
-  //     userNewName !== null
-  //   ) {
-  //     const newUser = {
-  //       id: uuidv4(),
-  //       name: userNewName,
-  //       password: userNewPassword,
-  //       email: userNewEmail,
-  //       cartList: [],
-  //     };
-
-  //     setUserList([...userList, newUser])
-  //     setLoggedId(newUser)
-  //     // localStorage.setItem('user', newUser.id)
-  //     navigate("/")
-  //   }
-  // }
 
   const addToDatabase = async(newUserId)=>{
     try {

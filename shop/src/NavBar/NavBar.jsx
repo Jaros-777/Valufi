@@ -40,6 +40,7 @@ function NavBar() {
     await supabase.auth.signOut();
     setCartList([])
     setCartListTotal(0)
+    navigate("/")
     window.location.reload()
 
   }
@@ -147,7 +148,7 @@ function NavBar() {
               {(isLogged ) ?
                 (<div>
                   <p>Order</p>
-                  <p>Setting</p>
+                  <p onClick={()=> navigate("/settings")}>Setting</p>
                   <p onClick={LogOut} >Log Out</p>
                 </div>): <p onClick={() => {
                     navigate("/login");

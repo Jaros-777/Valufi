@@ -1,11 +1,9 @@
 import "./App.css";
 
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import supabase from "./supabaseClient";
 
-import { UserList } from "./UserList";
 import HomePage from "./HomePage";
 import NoPage from "./NoPage";
 import Product from "./Product";
@@ -13,6 +11,9 @@ import FilterProductPage from "./FilterProductsPage";
 import Cart from "./Cart";
 import Login from "./Profile/Login";
 import Register from "./Profile/Register";
+import Settings from "./Profile/Settings";
+import ChangePasswordByEmail from "./Profile/Operations/ChangePasswordByEmail";
+import ForgotPassword from "./Profile/ForgotPassword";
 
 export const pageContext = createContext([]);
 
@@ -164,6 +165,9 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/change-password-by-email" element={<ChangePasswordByEmail />} />
+          <Route path="/:forgotpassword" element={<ForgotPassword />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
