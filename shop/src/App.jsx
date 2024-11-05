@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-// import.meta.env.VITE_SUPABASE_URL;
 
 import { ListOfProducts } from "./ProductList";
 import { UserList } from "./UserList";
@@ -19,8 +18,15 @@ import Register from "./Profile/Register";
 export const pageContext = createContext([]);
 
 function App() {
+  const supabaseUrl = import.meta.env.VITE_APP_SUPABASE_URL
+  const supabaseKey = import.meta.env.VITE_APP_SUPABASE_KEY
   
-  const [productsList, setProductsList] = useState(ListOfProducts);
+  const supabase = createClient(
+    supabaseUrl,supabaseKey
+  );
+
+  
+  const [productsList, setProductsList] = useState([]);
   const [cartList, setCartList] = useState([]);
   const [cartListTotal, setCartListTotal] = useState(0)
   const [searchItem, setSearchItem]= useState("")
@@ -29,13 +35,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(false)// loggedId
   const [user, setUser] = useState(null)
 
-  const supabaseUrl = import.meta.env.VITE_APP_SUPABASE_URL
-  const supabaseKey = import.meta.env.VITE_APP_SUPABASE_KEY
   
-
-  const supabase = createClient(
-    supabaseUrl,supabaseKey
-  );
 
   // useEffect(()=>{
   //   const loggedUserID = localStorage.getItem('user')
@@ -73,8 +73,30 @@ function App() {
   
   // getSession();
 
+  const fetchProductsData = async () => {
+    const { data, error } = await supabase
+      .from('ValufiProducts')
+      .select('*')
+
+    if (error) {
+      console.error(error);
+    } else {
+      setProductsList(data);
+      // const [productsList, setProductsList] = useState(data);
+      return data
+      // console.log(data)
+    }
+  };
+    
+  useEffect(()=>{
+    fetchProductsData();
+    
+  },[])
+  // console.log("list APP ", productsList)
+
+
   return (
-    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal, searchItem, setSearchItem, isLogged, setIsLogged, userList, setUserList,user, setUser, supabase }}>
+    <pageContext.Provider value={{ productsList, cartList, setCartList, cartListTotal, setCartListTotal, searchItem, setSearchItem, isLogged, setIsLogged, userList, setUserList,user, setUser, supabase, fetchProductsData }}>
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<HomePage />} />

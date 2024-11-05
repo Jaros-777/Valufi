@@ -20,7 +20,7 @@ function HomePage() {
       <div id="home-page-container">
         <div id="products-container">
           {productsList.map((e)=>(
-            <ProductCard key={e.id} name={e.name} price={e.price} img={e.img} id={e.id}></ProductCard>
+            <ProductCard key={e.id} name={e.name} price={e.price} img={e.imgURL} id={e.id}></ProductCard>
           ))}
         </div>
       </div>

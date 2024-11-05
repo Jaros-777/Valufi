@@ -1,5 +1,5 @@
 import "./Product.scss";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { pageContext } from "./App";
 import { useParams } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
@@ -17,10 +17,11 @@ function Product() {
     setCartList,
     cartListTotal,
     setCartListTotal,
+    fetchProductsData,
   } = useContext(pageContext);
   const { productId } = useParams();
 
-  const product = productsList.find((e) => e.id === parseInt(productId));
+  const [product, setProduct] = useState(null);
 
   function AddToCart(id, name, price, img) {
     const idInArray = cartList.findIndex((item) => item.id === id);
@@ -50,12 +51,32 @@ function Product() {
     }
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (productsList.length === 0) {
+        await fetchProductsData();
+      }
+    };
+    
+    fetchData();
+  }, [fetchProductsData, productsList.length]);
+  useEffect(() => {
+    if (productsList.length > 0) {
+      const foundProduct = productsList.find((e) => e.id === productId);
+      setProduct(foundProduct);
+    }
+  }, [productsList, productId]);
+  
+  if (!product) {
+    return <p>Ładowanie...</p>;
+  }
+
   return (
     <>
       <NavBar></NavBar>
       <div id="product-container">
         <div id="product-img">
-          <img src={product.img} alt="product Image" />
+          <img src={product.imgURL} alt="product Image" />
         </div>
         <div id="product-description">
           <p id="description">
@@ -79,7 +100,12 @@ function Product() {
           <div id="count-add-section">
             <button
               onClick={() => {
-                AddToCart(product.id, product.name, product.price, product.img);
+                AddToCart(
+                  product.id,
+                  product.name,
+                  product.price,
+                  product.imgURL
+                );
               }}
             >
               Add to cart
@@ -90,7 +116,7 @@ function Product() {
             <img src={Payment} alt="Payments icons" />
           </div>
 
-          <p style={{ fontSize: "2vh",  fontWeight: "bold" }}>
+          <p style={{ fontSize: "2vh", fontWeight: "bold" }}>
             Shipping methods
           </p>
           <div className="shipping">

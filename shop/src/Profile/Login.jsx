@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const { setIsLogged, setCartList, supabase, setUser } = useContext(pageContext)
+  const { setIsLogged, setCartList, supabase, setUser,cartListTotal, setCartListTotal } = useContext(pageContext)
   const navigate = useNavigate()
 
   const[userEmail, setUserEmail] = useState("");
@@ -45,6 +45,25 @@ function Login() {
   //     console.log(data.session.access_token); // Tutaj znajdziesz informacje o sesji
   //   }
   // };
+  
+  const fetchCartListData = async () => {
+    const { data, error } = await supabase
+      .from('ValufiUsersAccount')
+      .select("*")
+
+    if (error) {
+      console.error(error);
+    } else {
+      setCartList(data[0].cartList)
+      if(data[0].cartList.length > 0){
+        // console.log("sum", (data[0].cartList.reduce((total, value) => total + parseFloat(value.price), 0).toFixed(2)))
+        // console.log(cartListTotal)
+      setCartListTotal(data[0].cartList.reduce((total, value) => total + parseFloat(value.price), 0).toFixed(2))
+      }
+      
+    }
+  };
+
 
   const Login = async () => {
     try {
@@ -57,12 +76,14 @@ function Login() {
       setUser(data.user)
       setIsLogged(true);
       setWrongPass(false)
+      // console.log("login ", data.user)
+      fetchCartListData();
       // getSession();
       // localStorage.setItem('userToken', getSession())
 
       
 
-      navigate("/")
+      // navigate("/")
     } catch (error) {
       // alert(error);
       setWrongPass(true)

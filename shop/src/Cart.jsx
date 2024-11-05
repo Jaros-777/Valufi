@@ -69,7 +69,7 @@ function Cart() {
                   }}
                   className="cart-product-img"
                 >
-                  <img src={e.img} alt="" />
+                  <img src={e.img} alt="img product" />
                 </div>
 
                 <div className="cart-product-center">
