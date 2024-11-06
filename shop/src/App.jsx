@@ -60,15 +60,14 @@ function App() {
       if (data[0].cartList.length > 0) {
         setCartListTotal(
           data[0].cartList
-            .reduce((total, value) => total + parseFloat(value.price), 0)
+            .reduce((total, value) => total + (value.count*value.price), 0)
             .toFixed(2)
         );
       }
     }
   };
-
   
-  //after refresh page data is loaded
+  //after refresh page data is loaded - token, logged
   useEffect(() => {
 
     const restoreSession = async () => {
@@ -110,7 +109,7 @@ function App() {
     }
   }, [isLogged]);
 
- //update cartList to dataBase
+ //after refresh? must update cartList from dataBase
   const uploadCartList = async()=>{
     try {
       const { data, error } = await supabase.from("ValufiUsersAccount")
