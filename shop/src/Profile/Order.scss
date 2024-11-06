@@ -1,0 +1,14 @@
+#order-container{
+    margin-top: 8vh;
+    min-height: 63vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media (max-width: 600px){
+    #order-container{
+        margin-top: 6vh;
+    }
+}

@@ -2,7 +2,7 @@ import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
-import supabase from "./supabaseClient";
+import {supabase} from "./supabaseClient";
 
 import HomePage from "./HomePage";
 import NoPage from "./NoPage";
@@ -12,8 +12,11 @@ import Cart from "./Cart";
 import Login from "./Profile/Login";
 import Register from "./Profile/Register";
 import Settings from "./Profile/Settings";
+import Order from "./Profile/Order";
 import ChangePasswordByEmail from "./Profile/Operations/ChangePasswordByEmail";
 import ForgotPassword from "./Profile/ForgotPassword";
+import MyOpinions from "./Profile/Operations/MyOpinions";
+import Payments from "./Profile/Operations/Payments";
 
 export const pageContext = createContext([]);
 
@@ -167,7 +170,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/change-password-by-email" element={<ChangePasswordByEmail />} />
-          <Route path="/:forgotpassword" element={<ForgotPassword />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/myopinions" element={<MyOpinions />} />
+          <Route path="/payments" element={<Payments />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

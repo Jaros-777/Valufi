@@ -1,6 +1,5 @@
 
 import { useNavigate } from "react-router-dom";
-import { Route } from 'react-router-dom'
 import "./NoPage.scss"
 
 function NoPage() {

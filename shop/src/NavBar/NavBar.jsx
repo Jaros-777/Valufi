@@ -147,7 +147,7 @@ function NavBar() {
             <div className="drop-menu" id="drop-menu-profile">
               {(isLogged ) ?
                 (<div>
-                  <p>Order</p>
+                  <p onClick={()=> navigate("/order")}>Order</p>
                   <p onClick={()=> navigate("/settings")}>Setting</p>
                   <p onClick={LogOut} >Log Out</p>
                 </div>): <p onClick={() => {
