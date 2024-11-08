@@ -66,7 +66,7 @@ function Settings() {
         <div id="settings-page">
           <div id="setting-container">
             <div id="welcome">
-              {user? <p>Welcome, {userName}</p> : <p>Welcome,</p>}
+              {user? <p>Welcome {userName}</p> : <p>Welcome</p>}
             </div>
             <div id="logic">{logic()}</div>
             <div id="functions">
