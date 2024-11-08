@@ -9,5 +9,17 @@ The user can create and manage an account, using functions such as logging out, 
 This store was created for demonstration purposes only, to showcase functionality and technical skills. It is not intended for commercial use due to the lack of configured payment systems.  
 
 
- 
-![image](https://github.com/user-attachments/assets/8ca8a373-4d6c-4664-9462-0e12e9371a45)
+Main Page  
+![image](https://github.com/user-attachments/assets/8ca8a373-4d6c-4664-9462-0e12e9371a45)  
+
+Product  
+![product](https://github.com/user-attachments/assets/f5898a63-4501-4211-abc8-818977846529)  
+
+Cart  
+![cart](https://github.com/user-attachments/assets/731b7a03-b37e-41ae-8299-430db295bcc0)  
+
+Settings  
+![settings](https://github.com/user-attachments/assets/c881cd27-5608-4857-82b5-5303639ac1b8)
+
+
+
