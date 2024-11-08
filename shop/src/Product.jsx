@@ -1,4 +1,6 @@
 import "./Product.scss";
+import iconFullStar  from "./assets/icon-full-star.png"
+import iconEmptyStar  from "./assets/icon-empty-star.png"
 import { useContext, useEffect, useState } from "react";
 import { pageContext } from "./App";
 import { useParams } from "react-router-dom";
@@ -95,7 +97,12 @@ function Product() {
         </div>
         <div id="product-right">
           <p id="product-name">{product.name}</p>
-          <p>opinion</p>
+          <div id="opinion">
+            <img src={iconFullStar} alt="full-star-icon" />
+            <img src={iconFullStar} alt="full-star-icon" />
+            <img src={iconFullStar} alt="full-star-icon" />
+            <img src={iconEmptyStar} alt="empty-star-icon" />
+          </div>
           <p id="product-price">{product.price} $</p>
           <div id="count-add-section">
             <button
