@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function Cart() {
   const navigate = useNavigate();
 
-  const { cartList, setCartList, cartListTotal, setCartListTotal } =
+  const { cartList, setCartList, cartListTotal, setCartListTotal, user } =
     useContext(pageContext);
 
   function deleteProduct(id, price) {
@@ -52,6 +52,7 @@ function Cart() {
       setCartList(copyCartList);
     }
   }
+
 
   return (
     <>
@@ -115,7 +116,7 @@ function Cart() {
         <div id="cart-checkout">
           <p>Summary</p>
           <p>{cartListTotal} $</p>
-          <button>Go to payment</button>
+          <button onClick={(()=> navigate("/payments"))}>Go to payment</button>
         </div>
       </div>
       <Footer></Footer>

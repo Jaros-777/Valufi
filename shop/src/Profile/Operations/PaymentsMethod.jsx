@@ -4,7 +4,7 @@ import "./../Order.scss";
 import { useContext } from "react";
 import { pageContext } from "../../App";
 
-function Payments() {
+function PaymentsMethod() {
     const { isLogged} = useContext(pageContext)
 
   return (
@@ -33,4 +33,4 @@ function Payments() {
   );
 }
 
-export default Payments;
+export default PaymentsMethod;

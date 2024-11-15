@@ -9,6 +9,7 @@ import NoPage from "./NoPage";
 import Product from "./Product";
 import FilterProductPage from "./FilterProductsPage";
 import Cart from "./Cart";
+import Payments from "./Payments";
 import Login from "./Profile/Login";
 import Register from "./Profile/Register";
 import Settings from "./Profile/Settings";
@@ -16,7 +17,7 @@ import Order from "./Profile/Order";
 import ChangePasswordByEmail from "./Profile/Operations/ChangePasswordByEmail";
 import ForgotPassword from "./Profile/ForgotPassword";
 import MyOpinions from "./Profile/Operations/MyOpinions";
-import Payments from "./Profile/Operations/Payments";
+import PaymentsMethod from "./Profile/Operations/PaymentsMethod";
 
 export const pageContext = createContext([]);
 
@@ -24,6 +25,7 @@ function App() {
   const [productsList, setProductsList] = useState([]);
   const [cartList, setCartList] = useState([]);
   const [cartListTotal, setCartListTotal] = useState(0);
+  const [userOrders, setUserOrders] = useState([]);
   const [searchItem, setSearchItem] = useState("");
 
   const [userList, setUserList] = useState([]);
@@ -46,7 +48,7 @@ function App() {
     fetchProductsData();
   }, []);
 
-  //load cartList from database
+  //load cartList and orderList from database
   const fetchCartListData = async () => {
     const { data, error } = await supabase
       .from("ValufiUsersAccount")
@@ -55,6 +57,7 @@ function App() {
     if (error) {
       console.error(error);
     } else {
+      
       setCartList(data[0].cartList);
       setUser(data[0])
       if (data[0].cartList.length > 0) {
@@ -64,6 +67,9 @@ function App() {
             .toFixed(2)
         );
       }
+      // order
+      setUserOrders(data[0].order)
+      // console.log("data Order ", data[0])
     }
   };
   
@@ -124,12 +130,33 @@ function App() {
       //after reflesh page user should get an error, but... programm read first id (id of the user in database) and the next a userId. Error is becaouse "id" not working
     }
   }
-
   useEffect(()=>{
     if(isLogged && cartList!== undefined){
       uploadCartList()
     }
   },[cartList,setCartList, isLogged])
+
+  //after refresh? must update orderList from dataBase
+  const uploadOrdertList = async()=>{
+    try {
+      const { data, error } = await supabase.from("ValufiUsersAccount")
+      .update([
+        {order: userOrders}
+      ])
+      .eq('userId', user.userId);
+      if (error) throw error;
+      
+    } catch (error) {
+      // alert(error);
+      //after reflesh page user should get an error, but... programm read first id (id of the user in database) and the next a userId. Error is becaouse "id" not working
+    }
+  }
+
+  useEffect(()=>{
+    if(isLogged && userOrders!== undefined){
+      uploadOrdertList()
+    }
+  },[userOrders, setUserOrders, isLogged])
 
   return (
     <pageContext.Provider
@@ -149,7 +176,7 @@ function App() {
         setUser,
         supabase,
         fetchProductsData,
-        fetchCartListData
+        fetchCartListData,userOrders, setUserOrders
       }}
     >
       <BrowserRouter>
@@ -165,13 +192,14 @@ function App() {
             element={<FilterProductPage />}
           />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/payments" element={<Payments />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/change-password-by-email" element={<ChangePasswordByEmail />} />
           <Route path="/order" element={<Order />} />
           <Route path="/myopinions" element={<MyOpinions />} />
-          <Route path="/payments" element={<Payments />} />
+          <Route path="/paymentsmethod" element={<PaymentsMethod />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="*" element={<NoPage />} />
         </Routes>

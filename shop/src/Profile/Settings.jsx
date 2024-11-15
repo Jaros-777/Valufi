@@ -12,16 +12,10 @@ function Settings() {
   const { isLogged, user, setIsLogged, setCartList, setCartListTotal } =
     useContext(pageContext);
   const [currentOperation, setCurrentOperation] = useState("");
-  const [userName, setUserName] = useState("");
 
   const navigate = useNavigate();
 
-  const RefreshName = async()=>{
-    setUserName(await user.name)
-  }
-  useEffect(()=>{
-    // RefreshName()
-  })
+ 
 
 
   const logic = () => {
@@ -66,7 +60,7 @@ function Settings() {
         <div id="settings-page">
           <div id="setting-container">
             <div id="welcome">
-              {user? <p>Welcome {userName}</p> : <p>Welcome</p>}
+              {user? <p>Welcome {user.name}</p> : <p>Welcome</p>}
             </div>
             <div id="logic">{logic()}</div>
             <div id="functions">
