@@ -73,6 +73,7 @@ function Product() {
     return <p>Ładowanie...</p>;
   }
 
+
   return (
     <>
       <NavBar></NavBar>
@@ -95,9 +96,25 @@ function Product() {
             ab sed.
           </p>
         </div>
+        <div id="opinions">
+          <p style={{margin:"2vh 0vw", fontWeight:"bold"}}>Opinions</p>
+          {product.opinions.map((e)=>(
+            <div className="opinion" key={e.userId}>
+              <div id="opinion-user">
+              <p>{e.userName}</p>
+              <p>Rate: {e.rate}</p>
+              </div>
+              <div id="opinion-description">
+              <p>{e.description}</p>
+              </div>
+             
+              
+            </div>
+          ))}
+        </div>
         <div id="product-right">
           <p id="product-name">{product.name}</p>
-          <div id="opinion">
+          <div id="opinion-rate">
             <img src={iconFullStar} alt="full-star-icon" />
             <img src={iconFullStar} alt="full-star-icon" />
             <img src={iconFullStar} alt="full-star-icon" />
