@@ -1,6 +1,7 @@
 import "./Product.scss";
-import iconFullStar  from "./assets/icon-full-star.png"
-import iconEmptyStar  from "./assets/icon-empty-star.png"
+import "./ProductCard.scss";
+import iconFullStar from "./assets/icon-full-star.png";
+import iconEmptyStar from "./assets/icon-empty-star.png";
 import { useContext, useEffect, useState } from "react";
 import { pageContext } from "./App";
 import { useParams } from "react-router-dom";
@@ -25,7 +26,18 @@ function Product() {
 
   const [product, setProduct] = useState(null);
 
+  const [showInfoBox, setShowInfoBox] = useState(false);
+
+  function ShowInfo() {
+    setShowInfoBox(true);
+
+    setTimeout(() => {
+      setShowInfoBox(false);
+    }, 3000);
+  }
+
   function AddToCart(id, name, price, img) {
+    ShowInfo();
     const idInArray = cartList.findIndex((item) => item.id === id);
 
     if (idInArray !== -1) {
@@ -59,7 +71,7 @@ function Product() {
         await fetchProductsData();
       }
     };
-    
+
     fetchData();
   }, [fetchProductsData, productsList.length]);
   useEffect(() => {
@@ -68,15 +80,36 @@ function Product() {
       setProduct(foundProduct);
     }
   }, [productsList, productId]);
-  
+
   if (!product) {
     return <p>Ładowanie...</p>;
   }
 
+  const numberIntoStars = (userRate) => {
+    const rateArray = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < userRate) {
+        rateArray.push(<img src={iconFullStar} key={`img-${i}`} />);
+      } else {
+        rateArray.push(<img src={iconEmptyStar} key={`img-${i}`} />);
+      }
+    }
+
+    return <div id="rate-stars">{rateArray}</div>;
+  };
 
   return (
     <>
+      {showInfoBox && (
+        <div id="info-container">
+          <p>Product added to cart</p>
+          <div id="animate-container">
+            <div id="animate-line"></div>
+          </div>
+        </div>
+      )}
       <NavBar></NavBar>
+
       <div id="product-container">
         <div id="product-img">
           <img src={product.imgURL} alt="product Image" />
@@ -97,28 +130,24 @@ function Product() {
           </p>
         </div>
         <div id="opinions">
-          <p style={{margin:"2vh 0vw", fontWeight:"bold"}}>Opinions</p>
-          {product.opinions.map((e)=>(
+          <p style={{ margin: "2vh 0vw", fontWeight: "bold" }}>Opinions</p>
+          {product.opinions[0].opinions.map((e) => (
             <div className="opinion" key={e.userId}>
               <div id="opinion-user">
-              <p>{e.userName}</p>
-              <p>Rate: {e.rate}</p>
+                <p>{e.userName}</p>
+                {numberIntoStars(e.rate)}
               </div>
               <div id="opinion-description">
-              <p>{e.description}</p>
+                <p>{e.description}</p>
               </div>
-             
-              
             </div>
           ))}
         </div>
         <div id="product-right">
           <p id="product-name">{product.name}</p>
           <div id="opinion-rate">
-            <img src={iconFullStar} alt="full-star-icon" />
-            <img src={iconFullStar} alt="full-star-icon" />
-            <img src={iconFullStar} alt="full-star-icon" />
-            <img src={iconEmptyStar} alt="empty-star-icon" />
+            <p> {product.opinions[0].avgRate.toFixed(1)}</p>
+            {numberIntoStars(product.opinions[0].avgRate)}
           </div>
           <p id="product-price">{product.price} $</p>
           <div id="count-add-section">
@@ -157,6 +186,7 @@ function Product() {
           </div>
         </div>
       </div>
+
       <Footer></Footer>
     </>
   );

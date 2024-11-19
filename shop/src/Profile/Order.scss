@@ -43,6 +43,10 @@
                 background-color: var(--main-blue);
                 color: white;
             }
+            .count-price-order{
+                width: 20%;
+                display: flex;
+            }
         }
         
     }
@@ -51,5 +55,35 @@
 @media (max-width: 600px){
     #order-container{
         margin-top: 6vh;
+
+        .order-products{
+            padding: 1vw 1vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            p{
+                width: 15%;
+            }
+            p:first-child{
+                width: 45%;
+            }
+
+            img{
+                width: 20%;
+            }
+            button{
+                border: 2px solid black;
+                border-radius: 20px;
+                padding: 3vh 1vw;
+                background-color: var(--main-blue);
+                color: white;
+            }
+            .count-price-order{
+                width: 20%;
+                display: flex;
+                flex-direction: column;
+            }
+        }
     }
 }

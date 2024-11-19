@@ -7,8 +7,6 @@ import { pageContext } from "../App";
 function Order() {
   const { isLogged, userOrders } = useContext(pageContext);
 
-  
-
   return (
     <>
       <NavBar></NavBar>
@@ -18,7 +16,6 @@ function Order() {
           <div id="order-text">
             <p>Your orders</p>
           </div>
-
           {userOrders.map((e) => (
             <div className="order" key={e.orderId}>
               <p>Order ID: {e.orderId}</p>
@@ -26,9 +23,13 @@ function Order() {
               {e.products.map((p) => (
                 <div className="order-products" key={p.id}>
                   <img src={p.img} alt={p.name} />
+                  div#
                   <p>{p.name}</p>
-                  <p>Count: {p.count}</p>
-                  <p>{p.price}$</p>
+                  <div className="count-price-order">
+                    <p>Count: {p.count}</p>
+                    <p>{p.price}$</p>
+                  </div>
+
                   <button>Rate</button>
                 </div>
               ))}
