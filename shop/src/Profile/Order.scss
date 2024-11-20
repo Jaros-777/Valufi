@@ -81,9 +81,62 @@
     }
 }
 
+@media (max-width: 1100px){
+    #order-container{
+        margin-top: 6vh;
+
+        .order{
+            width: 75%;
+    
+            .order-products{
+                flex-direction: column;
+                
+                img{
+                    margin-top: 2vh;
+                    width: 55%;
+                }
+                button{
+                    width: 50%;
+                    height: 8vh;
+                }
+                .order-product-details{
+                    width: 90%;
+                }
+    
+            }
+            #order-total{
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                p{
+                    width: auto;
+                    margin-right: 0vw;
+                }
+            }
+            
+        }
+
+    }
+}
 @media (max-width: 600px){
     #order-container{
         margin-top: 6vh;
+
+        .order{
+            width: 95%;
+    
+            .order-products{
+                
+                img{
+                    width: 75%;
+                }
+                button{
+                    width: 50%;
+                }
+    
+            }
+            
+        }
 
     }
 }
