@@ -9,8 +9,42 @@ function Payments() {
   const { user, userOrders, setUserOrders, cartList,setCartList, setCartListTotal } = useContext(pageContext);
   //add order to json in user database
 
+  const createDate = ()=>{
+      const newDate = new Date();
+      let orderDate =""
+      const day = newDate.getDay();
+      if(day < 10){
+        orderDate = "0";
+      }
+      orderDate += day+".";
+      const month = newDate.getMonth()+1;
+      if(month < 10){
+        orderDate += "0";
+      }
+      orderDate += month+".";
+      const year = newDate.getFullYear();
+      
+       orderDate += year+" "
+
+      const hour = newDate.getHours();
+      if(hour < 10){
+        orderDate += "0";
+      }
+      orderDate += hour+":";
+      const minute = newDate.getHours();
+      if(minute < 10){
+        orderDate += "0";
+      }
+      orderDate += minute;
+
+
+      return orderDate
+  }
+
+
   const addOrder = async () =>{
-    
+      
+      
 
       const updatedCartList = cartList.map((e)=>({
         ...e,
@@ -20,7 +54,7 @@ function Payments() {
       const newOrder = {
         orderId: uuidv4(),
         products: updatedCartList,
-        date: Date()
+        date: createDate()
       };
     
     setUserOrders([...userOrders, newOrder])

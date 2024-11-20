@@ -17,10 +17,13 @@
         border: 2px solid black;
         border-radius: 20px;
         padding: 1vw 1vw;
-        width: 80%;
+        width: 70%;
         margin: 1vh 1vw;
         background-color: var(--main-blue);
         color: white;
+        p{
+            padding: 1vh 0vw;
+        }
 
         .order-products{
             padding: 1vw 1vw;
@@ -44,6 +47,11 @@
                 flex-direction: column;
                 width: 60%;
                 font-size: 3.5vh;
+
+                p:first-child:hover{
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
                 
 
                 .count-price-container{

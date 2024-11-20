@@ -28,6 +28,7 @@ function Order() {
     return sum.toFixed(2);
   };
 
+
   return (
     <>
       <NavBar></NavBar>
@@ -40,7 +41,7 @@ function Order() {
           {userOrders.map((e) => (
             <div className="order" key={e.orderId}>
               <p>Order ID: {e.orderId}</p>
-              <p>Date</p>
+              <p>Date: {e.date}</p>
               {e.products.map((p) => (
                 <div className="order-products" key={p.id}>
                   <img
@@ -58,7 +59,7 @@ function Order() {
                       <p>Amount: {p.count}</p>
                       <p>{p.price}$/ pcs</p>
                       <div id="product-total">
-                        <p>Total: {p.price * p.count}$</p>
+                        <p>Total: {(p.price * p.count).toFixed(2)}$</p>
                       </div>
                     </div>
                   </div>
