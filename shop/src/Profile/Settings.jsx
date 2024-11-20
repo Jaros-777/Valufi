@@ -87,7 +87,7 @@ function Settings() {
               </button>
               <button
                 onClick={() => {
-                  navigate("/payments")
+                  navigate("/paymentsmethod")
                 }}
               >
                 Payments method

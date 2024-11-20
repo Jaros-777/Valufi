@@ -1,11 +1,32 @@
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer";
 import "./Order.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { pageContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 function Order() {
   const { isLogged, userOrders } = useContext(pageContext);
+  const navigate = useNavigate();
+
+  if(!userOrders){
+    return <p>Loading</p>
+  }
+
+  const totalOrder = (id) => {
+    let sum = 0;
+
+
+      const currentOrder = userOrders.find((e) => e.orderId === id);
+    
+    if (currentOrder !== undefined) {
+      currentOrder.products.map((e) => {
+        sum +=parseFloat( e.price * e.count);
+      });
+    }
+
+    return sum.toFixed(2);
+  };
 
   return (
     <>
@@ -22,17 +43,32 @@ function Order() {
               <p>Date</p>
               {e.products.map((p) => (
                 <div className="order-products" key={p.id}>
-                  <img src={p.img} alt={p.name} />
-                  div#
-                  <p>{p.name}</p>
-                  <div className="count-price-order">
-                    <p>Count: {p.count}</p>
-                    <p>{p.price}$</p>
+                  <img
+                    style={{ cursor: "pointer" }}
+                    src={p.img}
+                    alt={p.name}
+                    onClick={() => {
+                      navigate(`/product/${p.id}`);
+                    }}
+                  />
+                  <div className="order-product-details">
+                    <p>{p.name}</p>
+
+                    <div className="count-price-container">
+                      <p>Amount: {p.count}</p>
+                      <p>{p.price}$/ pcs</p>
+                      <div id="product-total">
+                        <p>Total: {p.price * p.count}$</p>
+                      </div>
+                    </div>
                   </div>
 
                   <button>Rate</button>
                 </div>
               ))}
+              <div id="order-total">
+                <p>Total: {totalOrder(e.orderId)} $</p>
+              </div>
             </div>
           ))}
         </div>

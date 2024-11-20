@@ -10,7 +10,8 @@
         width: 60vw;
         border-radius: 20px;
         padding: 1vh 1vw;
-        background-color: rgb(218, 218, 218);
+        background-color: var(--main-blue);
+        color: white;
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: 18.75% 18.75% 18.75% 18.75% 25%;
