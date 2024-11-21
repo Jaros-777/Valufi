@@ -116,7 +116,7 @@ function Cart() {
         <div id="cart-checkout">
           <p>Summary</p>
           <p>{cartListTotal} $</p>
-          <button onClick={(()=> navigate("/payments"))}>Go to payment</button>
+          <button onClick={(()=> navigate("/checkout"))}>Go to payment</button>
         </div>
       </div>
       <Footer></Footer>

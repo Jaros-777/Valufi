@@ -1,0 +1,135 @@
+#checkout-container {
+  margin-top: 12vh;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 55vw 30vw;
+  grid-template-rows: 5fr;
+  gap: 3vh 1vw;
+
+  
+
+  #user-information {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    background-color: var(--main-grey);
+    border-radius: 20px;
+    padding: 1vw 1vw;
+
+    h1{
+        text-align: center;
+    }
+
+    button{
+        background-color: var(--main-blue);
+        color: white;
+        padding: 1vw 1vw;
+        border-radius: 20px;
+        margin-top: 3vh;
+        font-size: 1.5vh;
+        transition: 0.5s;
+
+        &:hover {
+            scale: 1.05;
+            background-color: var(--main-light-blue);
+        }
+    }
+  }
+  #checkout-products-list {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    padding: 1vw 1vw;
+    background-color: var(--main-grey);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+
+    .checkout-product {
+      width: 90%;
+      display: flex;
+      align-items: center;
+
+      .checkout-product-img {
+        width: 25%;
+        img {
+          width: 100%;
+        }
+      }
+
+      .checkout-product-center {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        padding: 0vh 2vw;
+
+        p {
+          width: 100%;
+          &:first-child {
+            width: 20%;
+          }
+        }
+      }
+
+      .product-price {
+        width: 15%;
+      }
+    }
+  }
+
+  #user-payments {
+    grid-column-start: 1;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    background-color: var(--main-grey);
+    border-radius: 20px;
+    padding: 1vw 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    p{
+        padding: 1vw 1vw;
+        margin: 1vh;
+        background-color: var(--main-blue);
+        color: white;
+        border-radius: 20px;
+        transition: 0.3s;
+        cursor: pointer;
+        width: 60%;
+        text-align: center;
+
+        &:hover {
+            scale: 1.05;
+            background-color: var(--main-light-blue);
+        }
+    }
+  }
+
+  #checkout-checkout {
+    background-color: var(--main-blue);
+    color: white;
+    padding: 1vw 1vw;
+    position: fixed;
+    top: 12vh;
+    right: 4vw;
+    height: 40vh;
+    width: 30vw;
+    border-radius: 20px;
+
+    button{
+        background-color: white;
+        padding: 1vw 1vw;
+        border-radius: 20px;
+        margin-top: 3vh;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #payments-container {
+    margin-top: 6vh;
+    min-height: 58vh;
+  }
+}

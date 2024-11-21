@@ -124,9 +124,11 @@
             color: white;
             padding: 1.5vh 1vw;
             border-radius: 10px;
+            transition: 0.5s;
 
             &:hover{
-                background-color: #096f9e;
+                scale: 1.05;
+                background-color: var(--main-light-blue);
             }
         }
     }

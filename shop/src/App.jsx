@@ -9,7 +9,7 @@ import NoPage from "./NoPage";
 import Product from "./Product";
 import FilterProductPage from "./FilterProductsPage";
 import Cart from "./Cart";
-import Payments from "./Payments";
+import Checkout from "./Checkout";
 import Login from "./Profile/Login";
 import Register from "./Profile/Register";
 import Settings from "./Profile/Settings";
@@ -192,7 +192,7 @@ function App() {
             element={<FilterProductPage />}
           />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/payments" element={<Payments />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/settings" element={<Settings />} />

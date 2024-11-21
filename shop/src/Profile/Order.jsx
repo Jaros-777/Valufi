@@ -53,7 +53,9 @@ function Order() {
                     }}
                   />
                   <div className="order-product-details">
-                    <p>{p.name}</p>
+                    <p onClick={() => {
+                      navigate(`/product/${p.id}`);
+                    }} style={{cursor:"pointer"}}>{p.name}</p>
 
                     <div className="count-price-container">
                       <p>Amount: {p.count}</p>
