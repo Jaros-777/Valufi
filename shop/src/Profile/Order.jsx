@@ -6,22 +6,21 @@ import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 function Order() {
-  const { isLogged, userOrders } = useContext(pageContext);
+  const { isLogged, userOrders, user } = useContext(pageContext);
   const navigate = useNavigate();
 
-  if(!userOrders){
-    return <p>Loading</p>
+  if (!userOrders) {
+    return <p>Loading</p>;
   }
 
   const totalOrder = (id) => {
     let sum = 0;
 
+    const currentOrder = userOrders.find((e) => e.orderId === id);
 
-      const currentOrder = userOrders.find((e) => e.orderId === id);
-    
     if (currentOrder !== undefined) {
       currentOrder.products.map((e) => {
-        sum +=parseFloat( e.price * e.count);
+        sum += parseFloat(e.price * e.count);
       });
     }
 
@@ -38,42 +37,52 @@ function Order() {
           <div id="order-text">
             <p>Your orders</p>
           </div>
-          {userOrders.map((e) => (
-            <div className="order" key={e.orderId}>
-              <p>Order ID: {e.orderId}</p>
-              <p>Date: {e.date}</p>
-              {e.products.map((p) => (
-                <div className="order-products" key={p.id}>
-                  <img
-                    style={{ cursor: "pointer" }}
-                    src={p.img}
-                    alt={p.name}
-                    onClick={() => {
-                      navigate(`/product/${p.id}`);
-                    }}
-                  />
-                  <div className="order-product-details">
-                    <p onClick={() => {
-                      navigate(`/product/${p.id}`);
-                    }} style={{cursor:"pointer"}}>{p.name}</p>
+          {userOrders
+            .slice()
+            .reverse()
+            .map((e) => (
+              <div className="order" key={e.orderId}>
+                <p>Order ID: {e.orderId}</p>
+                <p>Date: {e.date}</p>
+                {e.products.map((p) => (
+                  <div className="order-products" key={p.id}>
+                    <img
+                      style={{ cursor: "pointer" }}
+                      src={p.img}
+                      alt={p.name}
+                      onClick={() => {
+                        navigate(`/product/${p.id}`);
+                      }}
+                    />
+                    <div className="order-product-details">
+                      <p
+                        onClick={() => {
+                          navigate(`/product/${p.id}`);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {p.name}
+                      </p>
 
-                    <div className="count-price-container">
-                      <p>Amount: {p.count}</p>
-                      <p>{p.price}$/ pcs</p>
-                      <div id="product-total">
-                        <p>Total: {(p.price * p.count).toFixed(2)}$</p>
+                      <div className="count-price-container">
+                        <p>Amount: {p.count}</p>
+                        <p>{p.price}$/ pcs</p>
+                        <div id="product-total">
+                          <p>Total: {(p.price * p.count).toFixed(2)}$</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <button>Rate</button>
+                    <button>Rate</button>
+                  </div>
+                ))}
+                <div id="order-total">
+                  <p>Payment method: {e.paymentMethod}</p>
+                  <p>Delivery method: {e.delivery}</p>
+                  <p>Total: {totalOrder(e.orderId)} $</p>
                 </div>
-              ))}
-              <div id="order-total">
-                <p>Total: {totalOrder(e.orderId)} $</p>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       ) : (
         <div

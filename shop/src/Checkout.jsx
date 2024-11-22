@@ -4,6 +4,7 @@ import "./Checkout.scss";
 import { useContext, useState } from "react";
 import { pageContext } from "./App.jsx";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const {
@@ -16,7 +17,9 @@ function Checkout() {
     setCartListTotal,
   } = useContext(pageContext);
 
-  const [currentPayment, setCurrentPayment] = useState(0);
+  const [currentPayment, setCurrentPayment] = useState("PayU");
+  const [currentDelivery, setCurrentDelivery] = useState("InpostCourier");
+  const navigate = useNavigate()
 
   //add order to json in user database
 
@@ -61,11 +64,14 @@ function Checkout() {
       orderId: uuidv4(),
       products: updatedCartList,
       date: createDate(),
+      paymentMethod: currentPayment,
+      delivery: currentDelivery
     };
 
     setUserOrders([...userOrders, newOrder]);
     setCartList([]);
     setCartListTotal(0);
+    navigate("/")
   };
 
   if (!user) {
@@ -85,8 +91,7 @@ function Checkout() {
           <p>
           <span style={{fontWeight:'bold'}}>Address: </span>
              {user.details.address.town}, {user.details.address.street}{" "}
-            St. {user.details.address.houseNumber} {user.details.address.town} /
-            {user.details.address.flatNumber}{" "}
+            St. {user.details.address.houseNumber} {user.details.address.town} 
           </p>
           <p>
           <span style={{fontWeight:'bold'}}>Telephone: </span>{user.details.telephone}</p>
@@ -117,56 +122,71 @@ function Checkout() {
         <div id="user-payments">
           <h1>Payments Method</h1>
           <p
-            style={currentPayment === 0 ? { scale: "1.2" } : {}}
-            onClick={() => setCurrentPayment(0)}
+            style={currentPayment === "PayU" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentPayment("PayU")}
           >
             PayU{" "}
           </p>
           <p
-            style={currentPayment === 1 ? { scale: "1.2" } : {}}
-            onClick={() => setCurrentPayment(1)}
+            style={currentPayment === "Przelewy24" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentPayment("Przelewy24")}
           >
             {" "}
             Przelewy24
           </p>
           <p
-            style={currentPayment === 2 ? { scale: "1.2" } : {}}
-            onClick={() => setCurrentPayment(2)}
+            style={currentPayment === "Blik" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentPayment("Blik")}
           >
             Blik
           </p>
           <p
-            style={currentPayment === 3 ? { scale: "1.2" } : {}}
-            onClick={() => setCurrentPayment(3)}
+            style={currentPayment === "VISA" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentPayment("VISA")}
           >
             VISA
           </p>
           <p
-            style={currentPayment === 4 ? { scale: "1.2" } : {}}
-            onClick={() => setCurrentPayment(4)}
+            style={currentPayment === "MasterCard" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentPayment("MasterCard")}
           >
             MasterCard
           </p>
           <p
-            style={currentPayment === 5 ? { scale: "1.2" } : {}}
-            onClick={() => setCurrentPayment(5)}
+            style={currentPayment === " ApplePay" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentPayment(" ApplePay")}
           >
             Apple Pay
           </p>
           <p
-            style={currentPayment === 6 ? { scale: "1.2" } : {}}
-            onClick={() => setCurrentPayment(6)}
+            style={currentPayment === "GooglePay" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentPayment("GooglePay")}
           >
             Google Pay
           </p>
         </div>
+        <div id="delivery-container">
+          <h1>Delivery</h1>
+          <p
+            style={currentDelivery === "InpostCourier" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentDelivery("InpostCourier")}
+          >
+            Inpost courier
+          </p>
+          <p
+            style={currentDelivery === "InpostParcelLock" ? { scale: "1.2" } : {}}
+            onClick={() => setCurrentDelivery("InpostParcelLock")}
+          >
+            Inpost parcel lock
+          </p>
+        </div>
         <div id="checkout-details-container">
           <div id="checkout-details">
-            <p>Value of products: 324$</p>
-            <p>Delivery: 324$</p>
+            <p>Value of products: {cartListTotal}$</p>
+            <p>Delivery: <span>{currentDelivery=== "InpostCourier" ? 3 : 2}</span>$</p>
           </div>
           <p>Summary</p>
-          <p>{cartListTotal} $</p>
+          <p>{parseFloat(cartListTotal) + parseFloat(currentDelivery=== "InpostCourier" ? 3 : 2)} $</p>
           <div id="demo-info">
             <p>THIS IS ONLY DEMONSTRATION VERSION, YOU CAN'T BUY ANYTHING </p>
           </div>

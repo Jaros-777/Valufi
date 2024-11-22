@@ -174,11 +174,11 @@ function Product() {
           </p>
           <div className="shipping">
             <img src={InpostKurier} alt="" />
-            <p>Inpost courier - 0.00$</p>
+            <p>Inpost courier - 3.00$</p>
           </div>
           <div className="shipping">
             <img src={InpostPaczkomat} alt="" />
-            <p>Inpost parcel lockers 24/7 - 0.00$</p>
+            <p>Inpost parcel lockers 24/7 - 2.00$</p>
           </div>
           <div className="shipping" style={{ border: "none" }}>
             <img src={FastDelivery} alt="FastDelivery Icon" />

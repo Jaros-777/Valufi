@@ -6,39 +6,37 @@
   grid-template-rows: 5fr;
   gap: 3vh 1vw;
 
-  
-
   #user-information {
     grid-column-start: 1;
     grid-row-start: 1;
     background-color: var(--main-grey);
     border-radius: 20px;
-    padding: 1vw 4vw;
+    padding: 3vh 4vw;
 
-    h1{
-        text-align: center;
+    h1 {
+      text-align: center;
     }
 
-    button{
-        background-color: var(--main-blue);
-        color: white;
-        padding: 1vw 1vw;
-        border-radius: 20px;
-        margin-top: 3vh;
-        font-size: 1.5vh;
-        transition: 0.5s;
+    button {
+      background-color: var(--main-blue);
+      color: white;
+      padding: 1.5vh 1vw;
+      border-radius: 20px;
+      margin-top: 3vh;
+      font-size: 1.5vh;
+      transition: 0.5s;
 
-        &:hover {
-            scale: 1.05;
-            background-color: var(--main-light-blue);
-        }
+      &:hover {
+        scale: 1.05;
+        background-color: var(--main-light-blue);
+      }
     }
   }
   #checkout-products-list {
     grid-column-start: 1;
     grid-row-start: 2;
     grid-row-end: 4;
-    padding: 1vw 1vw;
+    padding: 1vh 1vw;
     background-color: var(--main-grey);
     display: flex;
     align-items: center;
@@ -81,30 +79,56 @@
   #user-payments {
     grid-column-start: 1;
     grid-row-start: 4;
-    grid-row-end: 6;
+    grid-row-end: 5;
+    background-color: var(--main-grey);
+    border-radius: 20px;
+    padding: 1vh 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      padding: 1vw 1vw;
+      margin: 1vh;
+      background-color: var(--main-blue);
+      color: white;
+      border-radius: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+      width: 60%;
+      text-align: center;
+
+      &:hover {
+        scale: 1.05;
+        background-color: var(--main-light-blue);
+      }
+    }
+    
+  }
+  #delivery-container {
+    grid-column-start: 1;
+    grid-row-start: 5;
     background-color: var(--main-grey);
     border-radius: 20px;
     padding: 1vw 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    p {
+      padding: 1vh 1vw;
+      margin: 1vh;
+      background-color: var(--main-blue);
+      color: white;
+      border-radius: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+      width: 60%;
+      text-align: center;
 
-
-    p{
-        padding: 1vw 1vw;
-        margin: 1vh;
-        background-color: var(--main-blue);
-        color: white;
-        border-radius: 20px;
-        transition: 0.3s;
-        cursor: pointer;
-        width: 60%;
-        text-align: center;
-
-        &:hover {
-            scale: 1.05;
-            background-color: var(--main-light-blue);
-        }
+      &:hover {
+        scale: 1.05;
+        background-color: var(--main-light-blue);
+      }
     }
   }
 
@@ -118,16 +142,16 @@
     width: 23vw;
     border-radius: 20px;
 
-    button{
-        background-color: white;
-        padding: 1vw 1vw;
-        border-radius: 20px;
-        margin-top: 3vh;
+    button {
+      background-color: white;
+      padding: 1vh 1vw;
+      border-radius: 20px;
+      margin-top: 3vh;
     }
 
-    #demo-info{
+    #demo-info {
       background-color: red;
-      border-radius:10px ;
+      border-radius: 10px;
       padding: 1vh 1vw;
       text-align: center;
       margin-top: 2vh;
@@ -136,8 +160,57 @@
 }
 
 @media (max-width: 600px) {
-  #payments-container {
-    margin-top: 6vh;
-    min-height: 58vh;
+  #checkout-container {
+    grid-template-columns: 1fr;
+
+    #user-information {
+      margin: 0vh 2vw;
+  
+      button {
+        width: 60%;
+        padding: 1vh 1vw;
+        font-size: 2vh;
+      }
+    }
+    #checkout-products-list {
+      margin: 0vh 2vw;
+  
+    }
+  
+    #user-payments {
+      margin: 0vh 2vw;
+      
+    }
+    #delivery-container {
+      margin: 0vh 2vw;
+    }
+  
+
+    #checkout-details-container {
+      background-color: var(--main-blue);
+      color: white;
+      padding: 3vh 4vw;
+      top: 65vh;
+      right: 0vw;
+      width: 92vw;
+      height: 30vh;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      z-index: 2;
+  
+      button {
+        background-color: white;
+        width: 60%;
+        margin-top: 3vh;
+      }
+  
+      #demo-info {
+        background-color: red;
+        border-radius: 10px;
+        padding: 1vh 1vw;
+        text-align: center;
+        margin-top: 2vh;
+      }
+    }
   }
 }

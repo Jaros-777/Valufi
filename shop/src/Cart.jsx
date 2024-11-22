@@ -2,7 +2,7 @@ import NavBar from "./NavBar/NavBar.jsx";
 import Footer from "./Footer.jsx";
 import "./Cart.scss";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { pageContext } from "./App";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,8 @@ function Cart() {
 
   const { cartList, setCartList, cartListTotal, setCartListTotal, user } =
     useContext(pageContext);
+    const [showInfoBox, setShowInfoBox] = useState(false);
+    
 
   function deleteProduct(id, price) {
     const idInArray = cartList.findIndex((item) => item.id === id); 
@@ -53,9 +55,24 @@ function Cart() {
     }
   }
 
+  function ShowInfo() {
+    setShowInfoBox(true);
+
+    setTimeout(() => {
+      setShowInfoBox(false);
+    }, 3000);
+  }
 
   return (
     <>
+    {showInfoBox && (
+        <div id="info-container">
+          <p>Cart is empty</p>
+          <div id="animate-container">
+            <div id="animate-line"></div>
+          </div>
+        </div>
+      )}
       <NavBar></NavBar>
       <div id="cart-container">
         <div id="cart-products-list">
@@ -116,7 +133,7 @@ function Cart() {
         <div id="cart-checkout">
           <p>Summary</p>
           <p>{cartListTotal} $</p>
-          <button onClick={(()=> navigate("/checkout"))}>Go to payment</button>
+          <button onClick={(()=> {cartList.length >0 ? navigate("/checkout") : ShowInfo()})}>Go to payment</button>
         </div>
       </div>
       <Footer></Footer>
