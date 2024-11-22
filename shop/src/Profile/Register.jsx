@@ -4,6 +4,8 @@ import "./Login.scss";
 import EmailLogo from "./icon-email.png";
 import PasswordIcon from "./icon-password.png";
 import ProfileIcon from "./icon-profile.png";
+import VisibleIcon from "./icon-visible.png"
+import NotVisibleIcon from "./icon-not-visible.png"
 import { useContext, useState } from "react";
 import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +17,7 @@ function Register() {
   const [userNewEmail, setNewUserEmail] = useState("");
   const [userNewPassword, setNewUserPassword] = useState("");
   const [userNewName, setNewUserName] = useState("");
+  const[visiblePass, setVisiblePass] = useState(false);
 
 
   const addToDatabase = async(newUserId)=>{
@@ -50,6 +53,12 @@ function Register() {
     }
   };
 
+  function changePassVisilbity(){
+    
+    visiblePass? setVisiblePass(false): setVisiblePass(true)
+
+  }
+
   return (
     <>
       <NavBar></NavBar>
@@ -65,7 +74,7 @@ function Register() {
                 setNewUserName(e.target.value);
               }}
             />
-            <img src={ProfileIcon} alt="Email Icon" />
+            <img src={ProfileIcon} alt="Email Icon" id="login-icon"/>
           </div>
           <div className="login-input">
             <input
@@ -75,17 +84,19 @@ function Register() {
                 setNewUserEmail(e.target.value);
               }}
             />
-            <img src={EmailLogo} alt="Email Icon" />
+            <img src={EmailLogo} alt="Email Icon" id="login-icon"/>
           </div>
           <div className="login-input">
             <input
-              type="text"
+              type={visiblePass? "text" : "password" }
               placeholder="Password"
               onChange={(e) => {
                 setNewUserPassword(e.target.value);
               }}
+             
             />
-            <img src={PasswordIcon} alt="Password Icon" />
+            <img src={visiblePass? VisibleIcon : NotVisibleIcon } alt="Show/ hide icon Icon" id="show-hide-pass" onClick={()=>{changePassVisilbity()}}/>
+            <img src={PasswordIcon} alt="Password Icon"  id="login-icon"/>
           </div>
           <button style={{ marginTop: "5vh" }} onClick={Register}>
             Register

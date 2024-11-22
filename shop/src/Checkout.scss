@@ -13,7 +13,7 @@
     grid-row-start: 1;
     background-color: var(--main-grey);
     border-radius: 20px;
-    padding: 1vw 1vw;
+    padding: 1vw 4vw;
 
     h1{
         text-align: center;
@@ -73,6 +73,7 @@
 
       .product-price {
         width: 15%;
+        margin-right: 2vw;
       }
     }
   }
@@ -107,15 +108,14 @@
     }
   }
 
-  #checkout-checkout {
+  #checkout-details-container {
     background-color: var(--main-blue);
     color: white;
-    padding: 1vw 1vw;
+    padding: 3vh 4vw;
     position: fixed;
     top: 12vh;
     right: 4vw;
-    height: 40vh;
-    width: 30vw;
+    width: 23vw;
     border-radius: 20px;
 
     button{
@@ -123,6 +123,14 @@
         padding: 1vw 1vw;
         border-radius: 20px;
         margin-top: 3vh;
+    }
+
+    #demo-info{
+      background-color: red;
+      border-radius:10px ;
+      padding: 1vh 1vw;
+      text-align: center;
+      margin-top: 2vh;
     }
   }
 }

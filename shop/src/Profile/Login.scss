@@ -39,18 +39,38 @@
             display: flex;
             margin: 1vh 0vw;
             height: 12%;
+            background-color: white;
+            border-radius: 20px;
 
             input{
                 width: 90%;
                 // padding: 0vh 1vw;
                 border-top-left-radius: 20px;
                 border-bottom-left-radius: 20px;
+                border: 2px solid black;
+                border-right: none;
+                height: 100%;
+                padding: 0px;
                 &[type=text]{
                     padding-left: 2vw;
                 }
+                &[type=password]{
+                    padding-left: 2vw;
+                }
+            }
+            #show-hide-pass{
+                width: 10%;
+                border-top: 2px solid black;
+                border-right: 2px solid black;
+                border-bottom: 2px solid black;
+                padding: 1vh 1vw;
+                object-fit: contain;
+                background-color: white;
+                height: 67%;
+                cursor: pointer;
             }
 
-            img{
+            #login-icon{
                 width: 10%;
                 border-top: 2px solid black;
                 border-right: 2px solid black;
@@ -59,7 +79,13 @@
                 border-bottom-right-radius: 20px;
                 padding: 1vh 1vw;
                 object-fit: contain;
+                background-color: var(--main-blue);
+                height: 67%;
+
+                
             }
+
+            
         }
 
         #login-options{

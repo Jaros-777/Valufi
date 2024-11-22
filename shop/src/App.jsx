@@ -16,8 +16,6 @@ import Settings from "./Profile/Settings";
 import Order from "./Profile/Order";
 import ChangePasswordByEmail from "./Profile/Operations/ChangePasswordByEmail";
 import ForgotPassword from "./Profile/ForgotPassword";
-import MyOpinions from "./Profile/Operations/MyOpinions";
-import PaymentsMethod from "./Profile/Operations/PaymentsMethod";
 
 export const pageContext = createContext([]);
 
@@ -198,8 +196,6 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/change-password-by-email" element={<ChangePasswordByEmail />} />
           <Route path="/order" element={<Order />} />
-          <Route path="/myopinions" element={<MyOpinions />} />
-          <Route path="/paymentsmethod" element={<PaymentsMethod />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="*" element={<NoPage />} />
         </Routes>

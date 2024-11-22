@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { pageContext } from "../App";
 import ChangePass from "./Operations/ChangePass";
 import ChangeEmail from "./Operations/ChangeEmail";
+import ChangeInformations from "./Operations/Changeinformations";
 import { useNavigate } from "react-router-dom";
 
 function Settings() {
@@ -24,6 +25,8 @@ function Settings() {
         return <ChangePass></ChangePass>;
       case "email":
         return <ChangeEmail></ChangeEmail>;
+      case "informations":
+        return <ChangeInformations></ChangeInformations>;
 
       default:
         return <div></div>;
@@ -80,17 +83,10 @@ function Settings() {
               </button>
               <button
                 onClick={() => {
-                  navigate("/myopinions")
+                  setCurrentOperation("informations");
                 }}
               >
-                My opinions
-              </button>
-              <button
-                onClick={() => {
-                  navigate("/paymentsmethod")
-                }}
-              >
-                Payments method
+                My informations
               </button>
             </div>
             <div id="delete">

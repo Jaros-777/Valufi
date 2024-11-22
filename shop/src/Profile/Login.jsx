@@ -3,6 +3,8 @@ import Footer from "../Footer";
 import "./Login.scss";
 import EmailLogo from "./icon-email.png"
 import PasswordIcon from "./icon-password.png"
+import VisibleIcon from "./icon-visible.png"
+import NotVisibleIcon from "./icon-not-visible.png"
 import { useContext, useState } from "react";
 import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
@@ -10,12 +12,13 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const { isLogged, setIsLogged, supabase, setUser, fetchCartListData } = useContext(pageContext)
+  const { isLogged, setIsLogged, supabase, fetchCartListData } = useContext(pageContext)
   const navigate = useNavigate()
 
   const[userEmail, setUserEmail] = useState("");
   const[userPassword, setUserPassword] = useState("");
   const[wrongPas, setWrongPass] = useState(false);
+  const[visiblePass, setVisiblePass] = useState(false);
 
 
   
@@ -38,6 +41,12 @@ function Login() {
     }
   };
 
+  function changePassVisilbity(){
+    
+    visiblePass? setVisiblePass(false): setVisiblePass(true)
+
+  }
+
   return (
     <>
       <NavBar></NavBar>
@@ -47,11 +56,12 @@ function Login() {
           <p>Login</p>
           <div className="login-input">
             <input type="text" placeholder="Email" onChange={(e)=>{setUserEmail(e.target.value)}}/>
-            <img src={EmailLogo} alt="Email Icon" />
+            <img src={EmailLogo} alt="Email Icon" id="login-icon"/>
           </div>
           <div className="login-input">
-            <input type="text" placeholder="Password" onChange={(e)=>{setUserPassword(e.target.value)}}/>
-            <img src={PasswordIcon} alt="Password Icon" />
+            <input type={visiblePass? "text" : "password" } placeholder="Password" onChange={(e)=>{setUserPassword(e.target.value)}}/>
+            <img src={visiblePass? VisibleIcon : NotVisibleIcon } alt="Show/ hide icon Icon" id="show-hide-pass" onClick={()=>{changePassVisilbity()}}/>
+            <img src={PasswordIcon} alt="Password Icon" id="login-icon"/>
           </div>
           {wrongPas ?  <p id="incorrect" >Incorrect email or password</p> : <p></p>}
           
