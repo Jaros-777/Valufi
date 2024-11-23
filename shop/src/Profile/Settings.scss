@@ -15,6 +15,7 @@
         grid-template-columns: 50% 50%;
         // grid-template-rows: 18.75% 18.75% 18.75% 18.75% 25%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1.5fr;
+        height: 55vh;
 
         button{
             border-radius: 10px;
@@ -38,6 +39,7 @@
             justify-content: center;
             align-items: center;
             font-size: 4vh;
+            height: 100%;
         }
         #logic{
             grid-column-start: 1;
@@ -114,6 +116,7 @@
             border: 2px solid red;
             text-align: center;
             font-weight: bold;
+            color: black;
             
 
             button{
@@ -164,11 +167,13 @@
 @media (max-width: 700px){
     #settings-page{
         margin-top: 12vh;
+        height: auto;
 
         #setting-container{
+            height: 100vh;
             width: 80vw;
             grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
             #welcome{
                 grid-column-start: 1;
@@ -178,21 +183,23 @@
                 align-items: center;
                 font-size: 4vh;
             }
-            #logic{
-                grid-column-start: 1;
-                grid-row-start: 6;
-                grid-row-end: 10;
-            }
             #functions{
                 grid-column-start: 1;
                 grid-row-start: 2;
-                grid-row-end: 6;
+                grid-row-end: 5;
                 
     
             }
+
+            #logic{
+                grid-column-start: 1;
+                grid-row-start: 5;
+                grid-row-end: 8;
+            }
+            
             #delete{
                 grid-column-start: 1;
-                grid-row-start: 10;
+                grid-row-start: 8;
             }
 
             #delete-container{
