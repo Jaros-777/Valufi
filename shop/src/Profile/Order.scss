@@ -1,153 +1,147 @@
-#order-container{
-    margin-top: 8vh;
-    min-height: 63vh;
+#order-container {
+  margin-top: 8vh;
+  min-height: 63vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  #order-text {
+    height: 8vh;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    font-size: 5vh;
+    margin: 2vh 0vw;
+  }
 
-    #order-text {
-        height: 8vh;
-        display: flex;
-        align-items: center;
-        font-size: 5vh;
-        margin: 2vh 0vw;
+  .order {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 1vw 1vw;
+    width: 70%;
+    margin: 1vh 1vw;
+    background-color: var(--main-blue);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      padding: 1vh 0vw;
     }
 
-    .order{
+    .order-products {
+      padding: 1vw 1vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      img {
+        width: 15%;
+      }
+      button {
         border: 2px solid black;
         border-radius: 20px;
-        padding: 1vw 1vw;
-        width: 70%;
-        margin: 1vh 1vw;
-        background-color: var(--main-blue);
-        color: white;
-        p{
-            padding: 1vh 0vw;
+        padding: 1.2vw 2vw;
+        background-color: white;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: var(--main-grey);
+          scale: 1.05;
         }
+      }
+      .order-product-details {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        font-size: 3.5vh;
 
-        .order-products{
-            padding: 1vw 1vw;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            
-
-
-            img{
-                width: 15%;
-            }
-            button{
-                border: 2px solid black;
-                border-radius: 20px;
-                padding: 1.2vw 2vw;
-                background-color: white;
-                transition: 0.5s;
-
-                &:hover{
-                    background-color: var(--main-grey);
-                    scale: 1.05;
-                }
-            }
-            .order-product-details{
-                display: flex;
-                flex-direction: column;
-                width: 60%;
-                font-size: 3.5vh;
-
-                
-
-                .count-price-container{
-                    display: flex;
-                    justify-content: space-around;
-                    font-size: 2.2vh;
-                    margin: 3vh 0vw;
-                }
-            }
-
+        .count-price-container {
+          display: flex;
+          justify-content: space-around;
+          font-size: 2.2vh;
+          margin: 3vh 0vw;
         }
-        #order-total{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content:center;
-            font-size: 3vh;
-            margin: 2vh 0vw;
-            border-top: 2px solid black;
-
-            .order-total-detail{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                margin: 0vh 4vw;
-
-                p{
-                    &:first-child{
-                        font-weight: bold;
-                    }
-                }
-            }
-        }
-        
+      }
     }
+    #order-total {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3vh;
+      margin: 2vh 0vw;
+      border-top: 2px solid black;
+      padding: 1vh 1vw;
+
+      .order-total-detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0vh 4vw;
+        text-align: center;
+        width: 20%;
+
+        p {
+          &:first-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
 }
 
-@media (max-width: 1100px){
-    #order-container{
-        margin-top: 6vh;
+@media (max-width: 1100px) {
+  #order-container {
+    margin-top: 6vh;
 
-        .order{
-            width: 75%;
-    
-            .order-products{
-                flex-direction: column;
-                
-                img{
-                    margin-top: 2vh;
-                    width: 55%;
-                }
-                button{
-                    width: 50%;
-                    height: 8vh;
-                }
-                .order-product-details{
-                    width: 90%;
-                }
-    
-            }
-            #order-total{
-                width: 100%;
-                justify-content: center;
-                align-items: center;
-                p{
-                    width: auto;
-                    margin-right: 0vw;
-                }
-            }
-            
+    .order {
+      width: 75%;
+
+      .order-products {
+        flex-direction: column;
+
+        img {
+          margin-top: 2vh;
+          width: 55%;
         }
-
+        button {
+          width: 50%;
+          height: 8vh;
+        }
+        .order-product-details {
+          width: 90%;
+        }
+      }
+      #order-total {
+        width: 100%;
+        font-size: 2vh;
+        p {
+          width: auto;
+          margin-right: 0vw;
+        }
+      }
     }
+  }
 }
-@media (max-width: 600px){
-    #order-container{
-        margin-top: 6vh;
+@media (max-width: 600px) {
+  #order-container {
+    margin-top: 6vh;
 
-        .order{
-            width: 95%;
-    
-            .order-products{
-                
-                img{
-                    width: 75%;
-                }
-                button{
-                    width: 50%;
-                }
-    
-            }
-            
+    .order {
+      width: 95%;
+
+      .order-products {
+        img {
+          width: 55%;
         }
-
+        button {
+            width: 40%;
+            height: 7vh;
+        }
+      }
     }
+  }
 }

@@ -54,24 +54,39 @@
           width: 100%;
         }
       }
-
-      .checkout-product-center {
-        width: 60%;
+      #checkout-product-details {
+        width: 75%;
         display: flex;
+        justify-content: center;
         align-items: center;
-        padding: 0vh 2vw;
 
-        p {
-          width: 100%;
-          &:first-child {
-            width: 20%;
+        .checkout-product-center {
+          width: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0vh 2vw;
+
+          p {
+            width: 100%;
+            &:first-child {
+              width: 20%;
+            }
           }
         }
-      }
 
-      .product-price {
-        width: 15%;
-        margin-right: 2vw;
+        #product-price {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 25%;
+
+          p {
+            &:first-child {
+              margin-right: 2vw;
+            }
+          }
+        }
       }
     }
   }
@@ -103,7 +118,6 @@
         background-color: var(--main-light-blue);
       }
     }
-    
   }
   #delivery-container {
     grid-column-start: 1;
@@ -140,32 +154,69 @@
     top: 12vh;
     right: 4vw;
     width: 23vw;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    .checkout-details {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  #checkout-sum-main {
+    padding: 3vh 4vw;
+    border-top: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 23vh;
+    right: 4vw;
+    width: 23vw;
+    background-color: var(--main-blue);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
 
     button {
       background-color: white;
       padding: 1vh 1vw;
       border-radius: 20px;
       margin-top: 3vh;
+      transition: 0.5s;
+
+      &:hover {
+        scale: 1.05;
+        background-color: var(--main-grey);
+      }
     }
 
+    .checkout-details {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     #demo-info {
       background-color: red;
       border-radius: 10px;
       padding: 1vh 1vw;
       text-align: center;
       margin-top: 2vh;
+      font-size: 2vh;
     }
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   #checkout-container {
     grid-template-columns: 1fr;
 
     #user-information {
       margin: 0vh 2vw;
-  
+
       button {
         width: 60%;
         padding: 1vh 1vw;
@@ -174,42 +225,85 @@
     }
     #checkout-products-list {
       margin: 0vh 2vw;
-  
+
+      .checkout-product{
+
+      #checkout-product-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 75%;
+
+        .checkout-product-center {
+          width: 90%;
+
+          p {
+            width: 100%;
+            &:first-child {
+              width: 20%;
+            }
+          }
+        }
+
+        #product-price {
+          width: 100%;
+          margin-top: 1vh;
+
+          p {
+            &:first-child {
+              margin-right: 2vw;
+            }
+          }
+        }
+      }
     }
-  
+    }
+
     #user-payments {
       margin: 0vh 2vw;
-      
     }
     #delivery-container {
       margin: 0vh 2vw;
     }
-  
 
     #checkout-details-container {
-      background-color: var(--main-blue);
-      color: white;
+      background-color: var(--main-grey);
+      color: black;
+      position: static;
+      width: auto;
+      margin: 0vh 2vw;
+
+      .checkout-details {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    #checkout-sum-main {
       padding: 3vh 4vw;
-      top: 65vh;
+      position: sticky;
+      bottom: 0vh;
       right: 0vw;
       width: 92vw;
-      height: 30vh;
+      height: 20vh;
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px;
-      z-index: 2;
-  
-      button {
-        background-color: white;
-        width: 60%;
-        margin-top: 3vh;
+      p {
+        margin: 0vh 4vw;
+        font-size: 3vh;
       }
-  
+
+      button {
+        padding: 1.5vh 4vw;
+        margin: 0vh 4vw;
+      }
       #demo-info {
-        background-color: red;
-        border-radius: 10px;
-        padding: 1vh 1vw;
-        text-align: center;
-        margin-top: 2vh;
+        p{
+          font-size: 1.7vh;
+        }
+        margin: 3vh 4vw;
       }
     }
   }

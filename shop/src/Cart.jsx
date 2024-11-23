@@ -133,7 +133,7 @@ function Cart() {
         <div id="cart-checkout">
           <p>Summary</p>
           <p>{cartListTotal} $</p>
-          <button onClick={(()=> {cartList.length >0 ? navigate("/checkout") : ShowInfo()})}>Go to payment</button>
+          <button onClick={(()=> {cartList.length >0 ? (user? navigate("/checkout") : navigate("/login")) : ShowInfo()})}>Go to payment</button>
         </div>
       </div>
       <Footer></Footer>

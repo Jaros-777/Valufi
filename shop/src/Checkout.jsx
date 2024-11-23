@@ -19,7 +19,7 @@ function Checkout() {
 
   const [currentPayment, setCurrentPayment] = useState("PayU");
   const [currentDelivery, setCurrentDelivery] = useState("InpostCourier");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //add order to json in user database
 
@@ -65,13 +65,13 @@ function Checkout() {
       products: updatedCartList,
       date: createDate(),
       paymentMethod: currentPayment,
-      delivery: currentDelivery
+      delivery: currentDelivery,
     };
 
     setUserOrders([...userOrders, newOrder]);
     setCartList([]);
     setCartListTotal(0);
-    navigate("/")
+    navigate("/");
   };
 
   if (!user) {
@@ -86,15 +86,18 @@ function Checkout() {
         <div id="user-information">
           <h1>Information</h1>
           <p>
-           <span style={{fontWeight:'bold'}}>Name: </span>{user.name} {user.surname}
+            <span style={{ fontWeight: "bold" }}>Name: </span>
+            {user.name} {user.surname}
           </p>
           <p>
-          <span style={{fontWeight:'bold'}}>Address: </span>
-             {user.details.address.town}, {user.details.address.street}{" "}
-            St. {user.details.address.houseNumber} {user.details.address.town} 
+            <span style={{ fontWeight: "bold" }}>Address: </span>
+            {user.details.address.town}, {user.details.address.street} St.{" "}
+            {user.details.address.houseNumber} {user.details.address.town}
           </p>
           <p>
-          <span style={{fontWeight:'bold'}}>Telephone: </span>{user.details.telephone}</p>
+            <span style={{ fontWeight: "bold" }}>Telephone: </span>
+            {user.details.telephone}
+          </p>
           {/* <button>Change address</button> */}
         </div>
         <div id="checkout-products-list">
@@ -104,17 +107,20 @@ function Checkout() {
           ) : (
             cartList.map((e) => (
               <div className="checkout-product" key={e.id}>
-                <div className="checkout-product-img">
-                  <img src={e.img} alt="img product" />
+                
+                  <div className="checkout-product-img">
+                    <img src={e.img} alt="img product" />
+                  </div>
+                  <div id="checkout-product-details">
+                  <div className="checkout-product-center">
+                    <p>{e.count} x</p>
+                    <p style={{ margin: "0vh 1vw" }}>{e.name}</p>
+                  </div>
+                  <div id="product-price">
+                    <p>{e.price}$/ pcs</p>
+                    <p>Total: {(e.price * e.count).toFixed(2)}$</p>
+                  </div>
                 </div>
-
-                <div className="checkout-product-center">
-                  <p>{e.count}</p>
-                  <p style={{ margin: "0vh 1vw" }}>{e.name}</p>
-                </div>
-
-                <p className="product-price">{e.price}$/ pcs</p>
-                <p>Total: {(e.price * e.count).toFixed(2)}$</p>
               </div>
             ))
           )}
@@ -174,19 +180,35 @@ function Checkout() {
             Inpost courier
           </p>
           <p
-            style={currentDelivery === "InpostParcelLock" ? { scale: "1.2" } : {}}
+            style={
+              currentDelivery === "InpostParcelLock" ? { scale: "1.2" } : {}
+            }
             onClick={() => setCurrentDelivery("InpostParcelLock")}
           >
             Inpost parcel lock
           </p>
         </div>
         <div id="checkout-details-container">
-          <div id="checkout-details">
-            <p>Value of products: {cartListTotal}$</p>
-            <p>Delivery: <span>{currentDelivery=== "InpostCourier" ? 3 : 2}</span>$</p>
+          <div className="checkout-details">
+            <p>Value of products:</p>
+            <p>{cartListTotal} $</p>
           </div>
-          <p>Summary</p>
-          <p>{parseFloat(cartListTotal) + parseFloat(currentDelivery=== "InpostCourier" ? 3 : 2)} $</p>
+          <div className="checkout-details">
+            <p>Delivery:</p>
+            <p>
+              <span>{currentDelivery === "InpostCourier" ? 3 : 2}</span> $
+            </p>
+          </div>
+        </div>
+        <div id="checkout-sum-main">
+          <div className="checkout-details">
+            <p>Summary</p>
+            <p>
+              {parseFloat(cartListTotal) +
+                parseFloat(currentDelivery === "InpostCourier" ? 3 : 2)}{" "}
+              $
+            </p>
+          </div>
           <div id="demo-info">
             <p>THIS IS ONLY DEMONSTRATION VERSION, YOU CAN'T BUY ANYTHING </p>
           </div>
