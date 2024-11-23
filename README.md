@@ -21,8 +21,9 @@ Cart
 Order  
 ![order](https://github.com/user-attachments/assets/023cfeb6-9ab4-4c07-9f7e-13ad87f35c16)
 
-Order  
-![order](https://github.com/user-attachments/assets/da401487-8383-4ea1-b6e4-b6d18bf7051f)
+Checkout  
+![checkout](https://github.com/user-attachments/assets/4d2c2823-f371-4917-8936-c2a1d6e7807c)
+
 
 
 Settings  
