@@ -95,7 +95,7 @@ function Checkout() {
           </p>
           <p>
           <span style={{fontWeight:'bold'}}>Telephone: </span>{user.details.telephone}</p>
-          <button>Change address</button>
+          {/* <button>Change address</button> */}
         </div>
         <div id="checkout-products-list">
           <h1>Cart List</h1>

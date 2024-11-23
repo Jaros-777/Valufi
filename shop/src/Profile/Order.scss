@@ -41,6 +41,12 @@
                 border-radius: 20px;
                 padding: 1.2vw 2vw;
                 background-color: white;
+                transition: 0.5s;
+
+                &:hover{
+                    background-color: var(--main-grey);
+                    scale: 1.05;
+                }
             }
             .order-product-details{
                 display: flex;
@@ -63,14 +69,23 @@
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content:center;
             font-size: 3vh;
             margin: 2vh 0vw;
             border-top: 2px solid black;
-            p{
-                margin-top: 2vh;
-                width: 20%;
-                margin-right: 5vw;
+
+            .order-total-detail{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin: 0vh 4vw;
+
+                p{
+                    &:first-child{
+                        font-weight: bold;
+                    }
+                }
             }
         }
         

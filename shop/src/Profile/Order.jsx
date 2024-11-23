@@ -27,7 +27,6 @@ function Order() {
     return sum.toFixed(2);
   };
 
-
   return (
     <>
       <NavBar></NavBar>
@@ -77,9 +76,18 @@ function Order() {
                   </div>
                 ))}
                 <div id="order-total">
-                  <p>Payment method: {e.paymentMethod}</p>
-                  <p>Delivery method: {e.delivery}</p>
-                  <p>Total: {totalOrder(e.orderId)} $</p>
+                  <div className="order-total-detail">
+                    <p>Payment method:</p>
+                    <p>{e.paymentMethod}</p>
+                  </div>
+                  <div className="order-total-detail">
+                    <p>Delivery method:</p>
+                    <p>{e.delivery}</p>
+                  </div>
+                  <div className="order-total-detail">
+                    <p>Total:</p>
+                    <p>{totalOrder(e.orderId)} $</p>
+                  </div>
                 </div>
               </div>
             ))}

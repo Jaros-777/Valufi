@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 function Settings() {
   const { isLogged, user, setIsLogged, setCartList, setCartListTotal } =
     useContext(pageContext);
-  const [currentOperation, setCurrentOperation] = useState("");
+  const [currentOperation, setCurrentOperation] = useState("informations");
 
   const navigate = useNavigate();
 

@@ -6,7 +6,6 @@
     align-items: center;
 
     #setting-container{
-        height: 40vh;
         width: 60vw;
         border-radius: 20px;
         padding: 1vh 1vw;
@@ -14,7 +13,8 @@
         color: white;
         display: grid;
         grid-template-columns: 50% 50%;
-        grid-template-rows: 18.75% 18.75% 18.75% 18.75% 25%;
+        // grid-template-rows: 18.75% 18.75% 18.75% 18.75% 25%;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1.5fr;
 
         button{
             border-radius: 10px;
@@ -166,10 +166,9 @@
         margin-top: 12vh;
 
         #setting-container{
-            height: 80vh;
             width: 80vw;
-            grid-template-columns: 100%;
-            grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
             #welcome{
                 grid-column-start: 1;
