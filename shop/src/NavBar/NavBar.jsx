@@ -31,6 +31,7 @@ function NavBar() {
 
   function searchItemByName() {
       navigate(`/category/search/${searchItem}`);
+      window.scrollTo(0,0)
   }
 
 
@@ -42,6 +43,7 @@ function NavBar() {
     setCartListTotal(0)
     navigate("/")
     window.location.reload()
+    window.scrollTo(0,0)
 
   }
   return (
@@ -50,6 +52,7 @@ function NavBar() {
         <div
           onClick={() => {
             navigate("/");
+            window.scrollTo(0,0)
           }}
           id="left"
         >
@@ -77,6 +80,7 @@ function NavBar() {
               <button
                 onClick={() => {
                   navigate(`/category/electronics`);
+                  window.scrollTo(0,0)
                 }}
               >
                 Electronics
@@ -84,6 +88,7 @@ function NavBar() {
               <button
                 onClick={() => {
                   navigate(`/category/accessories`);
+                  window.scrollTo(0,0)
                 }}
               >
                 Accessories
@@ -91,6 +96,7 @@ function NavBar() {
               <button
                 onClick={() => {
                   navigate(`/category/jewelry`);
+                  window.scrollTo(0,0)
                 }}
               >
                 Jewelry
@@ -101,6 +107,7 @@ function NavBar() {
             <img
               onClick={() => {
                 navigate("/cart");
+                window.scrollTo(0,0)
               }}
               src={Cart}
               alt="cart"
@@ -108,6 +115,7 @@ function NavBar() {
             <div
               onClick={() => {
                 navigate("/cart");
+                window.scrollTo(0,0)
               }}
               id="cart-amount"
             >
@@ -134,6 +142,7 @@ function NavBar() {
                 <button
                   onClick={() => {
                     navigate("/cart");
+                    window.scrollTo(0,0)
                   }}
                 >
                   Checkout
@@ -147,11 +156,12 @@ function NavBar() {
             <div className="drop-menu" id="drop-menu-profile">
               {(isLogged ) ?
                 (<div>
-                  <p onClick={()=> navigate("/order")}>Order</p>
-                  <p onClick={()=> navigate("/settings")}>Setting</p>
+                  <p onClick={()=> {navigate("/order"); window.scrollTo(0,0)}}>Order</p>
+                  <p onClick={()=> {navigate("/settings") ; window.scrollTo(0,0)}}>Setting</p>
                   <p onClick={LogOut} >Log Out</p>
                 </div>): <p onClick={() => {
                     navigate("/login");
+                    window.scrollTo(0,0)
                   }}>Login</p>
                } 
             </div>

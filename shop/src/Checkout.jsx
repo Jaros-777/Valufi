@@ -72,6 +72,7 @@ function Checkout() {
     setCartList([]);
     setCartListTotal(0);
     navigate("/");
+    window.scrollTo(0,0)
   };
 
   if (!user) {

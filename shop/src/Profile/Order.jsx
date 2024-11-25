@@ -72,7 +72,7 @@ function Order() {
                       </div>
                     </div>
 
-                    <button>Rate</button>
+                    {/* <button>Rate</button> */}
                   </div>
                 ))}
                 <div id="order-total">
