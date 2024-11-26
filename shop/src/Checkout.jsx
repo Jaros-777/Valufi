@@ -26,7 +26,7 @@ function Checkout() {
   const createDate = () => {
     const newDate = new Date();
     let orderDate = "";
-    const day = newDate.getDay();
+    const day = newDate.getDate();
     if (day < 10) {
       orderDate = "0";
     }
@@ -44,15 +44,19 @@ function Checkout() {
     if (hour < 10) {
       orderDate += "0";
     }
+    
     orderDate += hour + ":";
-    const minute = newDate.getHours();
+    const minute = newDate.getMinutes();
     if (minute < 10) {
       orderDate += "0";
     }
+    
     orderDate += minute;
 
     return orderDate;
   };
+
+  console.log(createDate())
 
   const addOrder = () => {
     const updatedCartList = cartList.map((e) => ({
@@ -205,8 +209,8 @@ function Checkout() {
           <div className="checkout-details">
             <p>Summary</p>
             <p>
-              {parseFloat(cartListTotal) +
-                parseFloat(currentDelivery === "InpostCourier" ? 3 : 2)}{" "}
+              {((parseFloat(cartListTotal) +
+                parseFloat(currentDelivery === "InpostCourier" ? 3 : 2)).toFixed(2))}{" "}
               $
             </p>
           </div>
