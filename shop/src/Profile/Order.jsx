@@ -45,14 +45,17 @@ function Order() {
                 <p>Date: {e.date}</p>
                 {e.products.map((p) => (
                   <div className="order-products" key={p.id}>
-                    <img
-                      style={{ cursor: "pointer" }}
-                      src={p.img}
-                      alt={p.name}
-                      onClick={() => {
-                        navigate(`/product/${p.id}`);
-                      }}
-                    />
+                    <div id="img-container">
+                      <img
+                        style={{ cursor: "pointer" }}
+                        src={p.img}
+                        alt={p.name}
+                        onClick={() => {
+                          navigate(`/product/${p.id}`);
+                        }}
+                      />
+                    </div>
+
                     <div className="order-product-details">
                       <p
                         onClick={() => {

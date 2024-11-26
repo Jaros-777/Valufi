@@ -34,10 +34,15 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
+      width: 90%;
 
-      img {
+      #img-container {
         width: 15%;
+        img {
+          width: 100%;
+        }
       }
+
       button {
         border: 2px solid black;
         border-radius: 20px;
@@ -53,8 +58,9 @@
       .order-product-details {
         display: flex;
         flex-direction: column;
-        width: 60%;
+        width: 85%;
         font-size: 3.5vh;
+        padding: 0vh 3vw;
 
         .count-price-container {
           display: flex;
@@ -103,9 +109,12 @@
       .order-products {
         flex-direction: column;
 
-        img {
-          margin-top: 2vh;
+        #img-container {
           width: 55%;
+          img {
+            margin-top: 2vh;
+            width: 100%;
+          }
         }
         button {
           width: 50%;
@@ -138,8 +147,8 @@
           width: 55%;
         }
         button {
-            width: 40%;
-            height: 7vh;
+          width: 40%;
+          height: 7vh;
         }
       }
     }
