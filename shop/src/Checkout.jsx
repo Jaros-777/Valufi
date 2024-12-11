@@ -122,8 +122,8 @@ function Checkout() {
                     <p style={{ margin: "0vh 1vw" }}>{e.name}</p>
                   </div>
                   <div id="product-price">
-                    <p>{e.price}$/ pcs</p>
-                    <p>Total: {(e.price * e.count).toFixed(2)}$</p>
+                    <p>{(e.price/100).toFixed(2)}$/ pcs</p>
+                    <p>Total: {((e.price/100).toFixed(2) * e.count).toFixed(2)}$</p>
                   </div>
                 </div>
               </div>
@@ -196,7 +196,7 @@ function Checkout() {
         <div id="checkout-details-container">
           <div className="checkout-details">
             <p>Value of products:</p>
-            <p>{cartListTotal} $</p>
+            <p>{(cartListTotal/100).toFixed(2)} $</p>
           </div>
           <div className="checkout-details">
             <p>Delivery:</p>
@@ -209,7 +209,7 @@ function Checkout() {
           <div className="checkout-details">
             <p>Summary</p>
             <p>
-              {((parseFloat(cartListTotal) +
+              {((parseFloat((cartListTotal/100).toFixed(2)) +
                 parseFloat(currentDelivery === "InpostCourier" ? 3 : 2)).toFixed(2))}{" "}
               $
             </p>

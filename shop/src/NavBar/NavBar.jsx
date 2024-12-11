@@ -134,7 +134,7 @@ function NavBar() {
                       <div style={{ width: "10%" }}>{e.count}x</div>
                       <div style={{ margin: "0vh 1vw" }}>{e.name}</div>
                     </div>
-                    <div id="right-cart">{e.price} $</div>
+                    <div id="right-cart">{(e.price/100).toFixed(2)} $</div>
                   </div>
                 ))
               )}
@@ -147,7 +147,7 @@ function NavBar() {
                 >
                   Checkout
                 </button>
-                <p>Total: {cartListTotal} $</p>
+                <p>Total: {(cartListTotal/100).toFixed(2)} $</p>
               </div>
             </div>
           </div>

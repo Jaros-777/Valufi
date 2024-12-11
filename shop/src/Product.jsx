@@ -149,7 +149,7 @@ function Product() {
             <p> {product.opinions[0].avgRate.toFixed(1)}</p>
             {numberIntoStars(product.opinions[0].avgRate)}
           </div>
-          <p id="product-price">{product.price} $</p>
+          <p id="product-price">{(product.price/100).toFixed(2)} $</p>
           <div id="count-add-section">
             <button
               onClick={() => {

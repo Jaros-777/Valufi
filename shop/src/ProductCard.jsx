@@ -41,7 +41,7 @@ function ProductCard(props) {
       };
       setCartList([...cartList, newItemCart]);
       setCartListTotal(
-        (parseFloat(cartListTotal) + parseFloat(price)).toFixed(2)
+        (parseFloat(cartListTotal) + parseFloat(price))
       );
     }
   }
@@ -76,7 +76,7 @@ function ProductCard(props) {
             {props.name}
             <div className="full-text">{props.name}</div>
           </div>
-          <p style={{ height: "20%", marginBottom: "1vh" }}>{props.price}$</p>
+          <p style={{ height: "20%", marginBottom: "1vh" }}>{(props.price/100).toFixed(2)}$</p>
           <button
             onClick={() => {
               AddToCart(props.id, props.name, props.price, props.img);

@@ -1,9 +1,11 @@
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer";
 import "./Order.scss";
+import "./OpinionContainer.scss"
 import { useContext, useState } from "react";
 import { pageContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import OpinionContainer from "./OpinionContainer";
 
 function Order() {
   const { isLogged, userOrders, user } = useContext(pageContext);
@@ -20,16 +22,26 @@ function Order() {
 
     if (currentOrder !== undefined) {
       currentOrder.products.map((e) => {
-        sum += parseFloat(e.price * e.count);
+        sum += parseFloat((e.price/100).toFixed(2) * e.count);
       });
     }
 
     return sum.toFixed(2);
   };
 
+  function showOpinionContainer(){
+    const con = document.getElementById("opinion-container").style.display
+    if(document.getElementById("opinion-container").style.display == "flex"){
+      document.getElementById("opinion-container").style.display="none"
+    }else{
+      document.getElementById("opinion-container").style.display="flex"
+    }
+  }
+
   return (
     <>
       <NavBar></NavBar>
+      
       {isLogged ? (
         // <p style={{fontSize:"3vh"}}>You haven't ordered anything yet</p>
         <div id="order-container">
@@ -45,6 +57,7 @@ function Order() {
                 <p>Date: {e.date}</p>
                 {e.products.map((p) => (
                   <div className="order-products" key={p.id}>
+                    <OpinionContainer img={p.img} name={p.name}></OpinionContainer>
                     <div id="img-container">
                       <img
                         style={{ cursor: "pointer" }}
@@ -68,14 +81,14 @@ function Order() {
 
                       <div className="count-price-container">
                         <p>Amount: {p.count}</p>
-                        <p>{p.price}$/ pcs</p>
+                        <p>{(p.price/100).toFixed(2)}$/ pcs</p>
                         <div id="product-total">
-                          <p>Total: {(p.price * p.count).toFixed(2)}$</p>
+                          <p>Total: {((p.price/100).toFixed(2) * p.count).toFixed(2)}$</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* <button>Rate</button> */}
+                    <button onClick={showOpinionContainer}>Rate</button>
                   </div>
                 ))}
                 <div id="order-total">

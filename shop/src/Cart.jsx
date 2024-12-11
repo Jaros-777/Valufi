@@ -118,7 +118,7 @@ function Cart() {
                   </p>
                 </div>
 
-                <p id="product-price">{e.price}$</p>
+                <p id="product-price">{(e.price/100).toFixed(2)}$</p>
                 <button
                   onClick={() => {
                     deleteProduct(e.id, e.price);
@@ -132,7 +132,7 @@ function Cart() {
         </div>
         <div id="cart-checkout">
           <p>Summary</p>
-          <p>{cartListTotal} $</p>
+          <p>{(cartListTotal/100).toFixed(2)} $</p>
           <button onClick={(()=> {cartList.length >0 ? (user? (navigate("/checkout") ,window.scrollTo(0,0)) : (navigate("/login") , window.scrollTo(0,0))) : ShowInfo()})}>Go to payment</button>
         </div>
       </div>
