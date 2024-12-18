@@ -11,6 +11,12 @@ function Order() {
   const { isLogged, userOrders, user } = useContext(pageContext);
   const navigate = useNavigate();
 
+  const [opinionOrderId, setOpinionOrderId] = useState(null)
+  const [opinionProductImg, setOpinionProductImg] = useState(null)
+  const [opinionProductName, setOpinionProductName] = useState(null)
+  const [opinionProductRate, setOpinionProductRate] = useState(null)
+  const [opinionProductId, setOpinionProductId] = useState(null)
+
   if (!userOrders) {
     return <p>Loading</p>;
   }
@@ -29,14 +35,17 @@ function Order() {
     return sum.toFixed(2);
   };
 
-  function showOpinionContainer(){
-    const con = document.getElementById("opinion-container").style.display
-    if(document.getElementById("opinion-container").style.display == "flex"){
-      document.getElementById("opinion-container").style.display="none"
-    }else{
-      document.getElementById("opinion-container").style.display="flex"
-    }
+  function showOpinionContainer(orderId, img, name, rated, id){
+     document.getElementById("opinion-container").style.display = "flex";
+     setOpinionProductImg(img);
+     setOpinionProductName(name);
+     setOpinionProductRate(rated)
+     setOpinionProductId(id)
+     setOpinionOrderId(orderId)
   }
+
+
+  
 
   return (
     <>
@@ -57,7 +66,7 @@ function Order() {
                 <p>Date: {e.date}</p>
                 {e.products.map((p) => (
                   <div className="order-products" key={p.id}>
-                    <OpinionContainer img={p.img} name={p.name}></OpinionContainer>
+                    <OpinionContainer orderId={opinionOrderId} img={opinionProductImg} name={opinionProductName} rated ={opinionProductRate} id={opinionProductId}></OpinionContainer>
                     <div id="img-container">
                       <img
                         style={{ cursor: "pointer" }}
@@ -88,7 +97,7 @@ function Order() {
                       </div>
                     </div>
 
-                    <button onClick={showOpinionContainer}>Rate</button>
+                    {p.rated? <p></p> : <button onClick={() => showOpinionContainer(e.orderId, p.img, p.name, p.rated, p.id)}>Rate</button> } 
                   </div>
                 ))}
                 <div id="order-total">

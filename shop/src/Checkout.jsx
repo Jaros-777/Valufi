@@ -56,7 +56,7 @@ function Checkout() {
     return orderDate;
   };
 
-  console.log(createDate())
+  //console.log(createDate())
 
   const addOrder = () => {
     const updatedCartList = cartList.map((e) => ({
