@@ -1,10 +1,10 @@
 
 #big-advert{
     width: 100%;
-    height: 30vh;
+    height: 15rem;
     background-color: blue;
     color: white;
-    margin-top: 8vh;
+    margin-top: 4rem;
 
     img{
         height: 100%;
@@ -22,15 +22,15 @@
     #products-container{
         display: grid;
         width: 90%;
-        padding: 3vh 0vw;
+        padding: 1.5rem 0vw;
         grid-template-columns: repeat(4,1fr);
-        gap: 10vh 2vw;
+        gap: 5rem 2vw;
     }
 }
 
 @media (max-width: 1250px) {
     #big-advert{
-        height: 25vh;
+        height: 12rem;
     }
     #home-page-container{
     
@@ -41,7 +41,7 @@
   }
 @media (max-width: 950px) {
     #big-advert{
-        height: 15vh;
+        height: 8rem;
         width: 100%;
     }
     #home-page-container{
@@ -53,8 +53,8 @@
   }
 @media (max-width: 600px) {
     #big-advert{
-        height: 12vh;
-        margin-top: 6vh;
+        height: 6rem;
+        margin-top: 3rem;
     }
     #home-page-container{
         min-height: 50vh;
@@ -62,10 +62,15 @@
         #products-container{
             display: grid;
             width: 95%;
-            padding: 3vh 3vw;
+            padding: 1.5rem 3vw;
             grid-template-columns: repeat(2,1fr);
-            gap: 2vh 2vw;
+            gap: 1rem 2vw;
         }
+    }
+  }
+@media (max-width: 600px) {
+    #big-advert{
+        height: 5rem;
     }
   }
 

@@ -123,7 +123,7 @@ function NavBar() {
             </div>
             <div id="drop-menu-cart">
               {cartList.length === 0 ? (
-                <p style={{ fontSize: "3vh", marginBottom: "2vh" }}>Empty</p>
+                <p>Empty</p>
               ) : (
                 cartList.map((e) => (
                   <div className="cart-item" key={e.id}>
@@ -131,8 +131,8 @@ function NavBar() {
                       <img src={e.img} alt="" />
                     </div>
                     <div id="center-cart">
-                      <div style={{ width: "10%" }}>{e.count}x</div>
-                      <div style={{ margin: "0vh 1vw" }}>{e.name}</div>
+                      <p>{e.count}x</p>
+                      <p>{e.name}</p>
                     </div>
                     <div id="right-cart">{(e.price/100).toFixed(2)} $</div>
                   </div>

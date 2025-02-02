@@ -11,18 +11,20 @@ function Cart() {
 
   const { cartList, setCartList, cartListTotal, setCartListTotal, user } =
     useContext(pageContext);
-    const [showInfoBox, setShowInfoBox] = useState(false);
-    
+  const [showInfoBox, setShowInfoBox] = useState(false);
 
   function deleteProduct(id, price) {
-    const idInArray = cartList.findIndex((item) => item.id === id); 
-    
+    const idInArray = cartList.findIndex((item) => item.id === id);
+
     const copyCartList = [...cartList];
     const itemToUpdate = copyCartList[idInArray];
     // console.log(itemToUpdate.count)
 
     setCartListTotal(
-      (parseFloat(cartListTotal) - (parseFloat(itemToUpdate.count) * parseFloat(price))).toFixed(2)
+      (
+        parseFloat(cartListTotal) -
+        parseFloat(itemToUpdate.count) * parseFloat(price)
+      ).toFixed(2)
     );
 
     setCartList((prevCartList) =>
@@ -65,7 +67,7 @@ function Cart() {
 
   return (
     <>
-    {showInfoBox && (
+      {showInfoBox && (
         <div id="info-container">
           <p>Cart is empty</p>
           <div id="animate-container">
@@ -77,7 +79,7 @@ function Cart() {
       <div id="cart-container">
         <div id="cart-products-list">
           {cartList.length === 0 ? (
-            <p style={{ fontSize: "5vh" }}>Empty Cart</p>
+            <p style={{ fontSize: "2.5rem" }}>Empty Cart</p>
           ) : (
             cartList.map((e) => (
               <div className="cart-product" key={e.id}>
@@ -90,24 +92,24 @@ function Cart() {
                   <img src={e.img} alt="img product" />
                 </div>
 
-                <div className="cart-product-center">
-                  <div className="cart-product-count">
-                    <button
-                      onClick={() => {
-                        changeCountProduct(e.id, "-", e.price);
-                      }}
-                    >
-                      -
-                    </button>
-                    <p>{e.count}</p>
-                    <button
-                      onClick={() => {
-                        changeCountProduct(e.id, "+", e.price);
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
+                <div className="cart-product-count">
+                  <button
+                    onClick={() => {
+                      changeCountProduct(e.id, "-", e.price);
+                    }}
+                  >
+                    -
+                  </button>
+                  <p>{e.count}</p>
+                  <button
+                    onClick={() => {
+                      changeCountProduct(e.id, "+", e.price);
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+                <div id="product-name">
                   <p
                     onClick={() => {
                       navigate(`/product/${e.id}`);
@@ -116,10 +118,11 @@ function Cart() {
                   >
                     {e.name}
                   </p>
+                <div className="full-text">{e.name}</div>
                 </div>
-
-                <p id="product-price">{(e.price/100).toFixed(2)}$</p>
+                <p id="product-price">{(e.price / 100).toFixed(2)}$</p>
                 <button
+                  id="delete-btn"
                   onClick={() => {
                     deleteProduct(e.id, e.price);
                   }}
@@ -132,8 +135,18 @@ function Cart() {
         </div>
         <div id="cart-checkout">
           <p>Summary</p>
-          <p>{(cartListTotal/100).toFixed(2)} $</p>
-          <button onClick={(()=> {cartList.length >0 ? (user? (navigate("/checkout") ,window.scrollTo(0,0)) : (navigate("/login") , window.scrollTo(0,0))) : ShowInfo()})}>Go to payment</button>
+          <p>{(cartListTotal / 100).toFixed(2)} $</p>
+          <button
+            onClick={() => {
+              cartList.length > 0
+                ? user
+                  ? (navigate("/checkout"), window.scrollTo(0, 0))
+                  : (navigate("/login"), window.scrollTo(0, 0))
+                : ShowInfo();
+            }}
+          >
+            Go to payment
+          </button>
         </div>
       </div>
       <Footer></Footer>
