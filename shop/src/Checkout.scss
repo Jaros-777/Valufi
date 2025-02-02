@@ -1,17 +1,17 @@
 #checkout-container {
-  margin-top: 12vh;
+  margin-top: 6rem;
   display: grid;
   justify-content: center;
   grid-template-columns: 55vw 30vw;
   grid-template-rows: 5fr;
-  gap: 3vh 1vw;
+  gap: 1.5rem 1vw;
 
   #user-information {
     grid-column-start: 1;
     grid-row-start: 1;
     background-color: var(--main-grey);
     border-radius: 20px;
-    padding: 3vh 4vw;
+    padding: 1.5rem 4vw;
 
     h1 {
       text-align: center;
@@ -20,10 +20,10 @@
     button {
       background-color: var(--main-blue);
       color: white;
-      padding: 1.5vh 1vw;
+      padding: 0.75rem 1vw;
       border-radius: 20px;
-      margin-top: 3vh;
-      font-size: 1.5vh;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
       transition: 0.5s;
 
       &:hover {
@@ -36,7 +36,7 @@
     grid-column-start: 1;
     grid-row-start: 2;
     grid-row-end: 4;
-    padding: 1vh 1vw;
+    padding: 0.5rem 1vw;
     background-color: var(--main-grey);
     display: flex;
     align-items: center;
@@ -65,7 +65,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 0vh 2vw;
+          padding: 0rem 2vw;
 
           p {
             width: 100%;
@@ -97,14 +97,14 @@
     grid-row-end: 5;
     background-color: var(--main-grey);
     border-radius: 20px;
-    padding: 1vh 1vw;
+    padding: 0.5rem 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     p {
       padding: 1vw 1vw;
-      margin: 1vh;
+      margin: 0.5rem;
       background-color: var(--main-blue);
       color: white;
       border-radius: 20px;
@@ -129,8 +129,8 @@
     flex-direction: column;
     align-items: center;
     p {
-      padding: 1vh 1vw;
-      margin: 1vh;
+      padding: 0.5rem 1vw;
+      margin: 0.5rem;
       background-color: var(--main-blue);
       color: white;
       border-radius: 20px;
@@ -149,9 +149,9 @@
   #checkout-details-container {
     background-color: var(--main-blue);
     color: white;
-    padding: 3vh 4vw;
+    padding: 1.5rem 4vw;
     position: fixed;
-    top: 12vh;
+    top: 6rem;
     right: 4vw;
     width: 23vw;
     border-top-left-radius: 20px;
@@ -165,14 +165,14 @@
     }
   }
   #checkout-sum-main {
-    padding: 3vh 4vw;
+    padding: 1.5rem 4vw;
     border-top: 2px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 23vh;
+    top: 11.5rem;
     right: 4vw;
     width: 23vw;
     background-color: var(--main-blue);
@@ -182,9 +182,9 @@
 
     button {
       background-color: white;
-      padding: 1vh 1vw;
+      padding: 0.5rem 1vw;
       border-radius: 20px;
-      margin-top: 3vh;
+      margin-top: 1.5rem;
       transition: 0.5s;
 
       &:hover {
@@ -202,29 +202,30 @@
     #demo-info {
       background-color: red;
       border-radius: 10px;
-      padding: 1vh 1vw;
+      padding: 0.5rem 1vw;
       text-align: center;
-      margin-top: 2vh;
-      font-size: 2vh;
+      margin-top: 1rem;
+      font-size: 0.8rem;
     }
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   #checkout-container {
+    width: 100%;
     grid-template-columns: 1fr;
 
     #user-information {
-      margin: 0vh 2vw;
+      margin: 0rem 2vw;
 
       button {
         width: 60%;
-        padding: 1vh 1vw;
-        font-size: 2vh;
+        padding: 0.5rem 1vw;
+        font-size: 1rem;
       }
     }
     #checkout-products-list {
-      margin: 0vh 2vw;
+      margin: 0rem 2vw;
 
       .checkout-product{
 
@@ -248,7 +249,7 @@
 
         #product-price {
           width: 100%;
-          margin-top: 1vh;
+          margin-top: 0.5rem;
 
           p {
             &:first-child {
@@ -261,10 +262,10 @@
     }
 
     #user-payments {
-      margin: 0vh 2vw;
+      margin: 0rem 2vw;
     }
     #delivery-container {
-      margin: 0vh 2vw;
+      margin: 0rem 2vw;
     }
 
     #checkout-details-container {
@@ -272,39 +273,62 @@
       color: black;
       position: static;
       width: auto;
-      margin: 0vh 2vw;
+      margin: 0rem 2vw;
 
       .checkout-details {
-        width: 100%;
+        width: 90%;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
     }
     #checkout-sum-main {
-      padding: 3vh 4vw;
+      padding: 1.5rem 0vw;
       position: sticky;
-      bottom: 0vh;
+      bottom: 0rem;
       right: 0vw;
-      width: 92vw;
-      height: 20vh;
+      width: 100%;
+      height: 10rem;
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px;
+      .checkout-details{
+        width: 90%;
+      }
       p {
-        margin: 0vh 4vw;
-        font-size: 3vh;
+        margin: 0rem 4vw;
+        font-size: 1.2rem;
       }
 
       button {
-        padding: 1.5vh 4vw;
-        margin: 0vh 4vw;
+        padding: 0.75rem 4vw;
+        margin: 0rem 4vw;
+        font-size: 0.8rem;
       }
       #demo-info {
+        width: 70%;
         p{
-          font-size: 1.7vh;
+          font-size: 0.7rem;
         }
-        margin: 3vh 4vw;
+        margin: 1.5rem 4vw;
       }
     }
   }
+}
+@media (max-width: 1100px){
+  #checkout-container{
+  h1{
+    font-size: 1.5rem;
+  }
+  #user-payments{
+    p{
+      padding: 1rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+  #delivery-container{
+    p{
+      font-size: 0.8rem;
+    }
+  }
+}
 }

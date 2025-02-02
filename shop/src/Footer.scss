@@ -1,12 +1,12 @@
 
 #footer-container{
     background-color: var(--main-blue);
-    height: 20vh;
-    margin-top: 5vh;
+    height: 10rem;
+    margin-top: 2.5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 2vh 2vw;
+    padding: 1rem 2vw;
     
 
     #footer-left{
@@ -18,7 +18,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: row;
-            font-size: 4vh;
+            font-size: 2rem;
             color: white;
 
             img{
@@ -37,7 +37,7 @@
             
             img{
                 height: 100%;
-                margin: 0vh 1vw;
+                margin: 0rem 1vw;
                 cursor: pointer;
             }
         }
@@ -61,18 +61,18 @@
         flex-direction: column;
         height: auto;
         position: relative;
-        bottom: 0vh;
+        bottom: 0rem;
 
         #footer-left{
-            height: 15vh;
+            height: 7.5rem;
     
             
         }
     
     
         #footer-right{
-            margin-top: 3vh;
-            height: 10vh;
+            margin-top: 1.5rem;
+            height: 5rem;
     
         }
     }

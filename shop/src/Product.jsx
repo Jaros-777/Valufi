@@ -169,7 +169,7 @@ function Product() {
             <img src={Payment} alt="Payments icons" />
           </div>
 
-          <p style={{ fontSize: "2vh", fontWeight: "bold" }}>
+          <p style={{ fontSize: "1rem", fontWeight: "bold" }}>
             Shipping methods
           </p>
           <div className="shipping">

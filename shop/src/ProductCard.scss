@@ -23,22 +23,22 @@
 
 #info-container{
     position: fixed;
-    top: 4vh;
+    top: 2rem;
     left: 50%;
     transform: translate(-50%);
     z-index: 2;
     background-color: var(--main-blue);
     color: white;
-    height: 10vh;
-    width: 22vw;
-    padding: 1vh 1vw;
+    height: 5rem;
+    width: 20rem;
+    padding: 0.5rem 1vw;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border: 2px solid white;
-    font-size: 3vh;
+    font-size: 1.5rem;
     animation: 3s infoShow forwards;
 
     #animate-container{
@@ -66,12 +66,12 @@
 #product-card-container{
     border-radius: 10px;
     text-align: center;
-    padding: 3vh;
+    padding: 1.5rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-direction: column;
-    height: 50vh;
+    height: 25rem;
     width: calc(100vw/6);
     background-color: var(--main-grey);
     
@@ -86,8 +86,8 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        font-size: 3vh;
-        margin-top: 2vh;
+        font-size: 1.4rem;
+        margin-top: 1rem;
         width: 100%;
         position: relative;
 
@@ -95,11 +95,11 @@
             display: none;
             position: absolute;
             background-color: rgba(255, 255, 255, 0.479);
-            top: -5vh;
+            top: -2.5rem;
             border: 1px solid black;
             border-radius: 10px;
-            font-size: 1.5vh;
-            padding: 1vh 1vw;
+            font-size: 0.75rem;
+            padding: 0.5rem 1vw;
             max-width: 90%;
             text-wrap: wrap;
 
@@ -122,7 +122,7 @@
         button{
             background-color: var(--main-blue);
             color: white;
-            padding: 1.5vh 1vw;
+            padding: 0.75rem 1vw;
             border-radius: 10px;
             transition: 0.5s;
 
@@ -155,20 +155,21 @@
 @media (max-width: 600px) {
     #info-container{
         width: 70vw;
+        font-size: 1rem;
     }
     #product-card-container{
-        padding: 2vh;
-        height: 30vh;
+        padding: 1rem;
+        height: 15rem;
         width: calc(100vw/2.8);
 
         #product-card-info{
             height: 40%;
-            font-size: 2vh;
-            margin-top: 2vh;
+            font-size: 1rem;
+            margin-top: 1rem;
 
             button{
-                padding: 1.5vh 1vw;
-                font-size: 1.5vh;
+                padding: 0.5rem 2vw;
+                font-size: 0.75rem;
             }
         }
     }

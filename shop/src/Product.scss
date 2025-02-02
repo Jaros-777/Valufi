@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: 59% 37%;
   align-items: start;
-  font-size: 3vh;
-  margin-top: 8vh;
+  font-size: 1.5rem;
+  margin-top: 4rem;
   width: 100%;
 
   #product-img {
@@ -13,7 +13,7 @@
     height: 90%;
     display: flex;
     justify-content: center;
-    padding-top: 0vh;
+    padding-top: 0rem;
     border-bottom: 2px solid black;
     img {
       width: 60%;
@@ -29,10 +29,10 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    padding-top: 0vh;
+    padding-top: 0rem;
 
     #description {
-      padding: 0vh 0vw;
+      padding: 0rem 0vw;
       width: 80%;
     }
   }
@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 10vh;
+    margin-top: 5rem;
     border-top: 2px solid black;
 
     .opinion {
@@ -74,9 +74,9 @@
         }
       }
       #opinion-description {
-        padding: 4vw 1vw;
+        padding: 2rem 1vw;
         width: 90%;
-        font-size: 2.5vh;
+        font-size: 1.25rem;
       }
     }
   }
@@ -88,15 +88,15 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 89vh;
+    height: 44.5rem;
     position: sticky;
-    top: 8vh;
+    top: 4rem;
     right: 0vw;
     border-left: 2px solid black;
-    padding: 3vh 0vw 0vh 3vw;
+    padding: 1.5rem 0vw 0vh 1.5rem;
 
     #product-name {
-      font-size: 5vh;
+      font-size: 2.5rem;
     }
 
     #opinion-rate {
@@ -136,7 +136,7 @@
       background-color: var(--main-blue);
       border-radius: 10px;
       color: white;
-      margin-top: 4vh;
+      margin-top: 2rem;
 
       p {
         border-right: 2px solid white;
@@ -146,8 +146,8 @@
       button {
         background-color: var(--main-blue);
         color: white;
-        padding: 1.5vh 1vw;
-        font-size: 2vh;
+        padding: 0.75rem 1vw;
+        font-size: 1rem;
         transition: 0.4s;
         border-radius: 10px;
         width: 100%;
@@ -158,23 +158,23 @@
       }
     }
     #payments {
-      margin-top: 3vh;
-      font-size: 2vh;
+      margin-top: 1.5rem;
+      font-size: 1rem;
       font-weight: bold;
-      padding-bottom: 2vh;
+      padding-bottom: 1rem;
       img {
         width: 70%;
-        margin-top: 2vh;
+        margin-top: 1rem;
       }
     }
     .shipping {
-      margin-top: 2vh;
-      font-size: 2vh;
+      margin-top: 1rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       border: 2px solid black;
       width: 70%;
-      padding: 1vh 1vw;
+      padding: 0.5rem 1vw;
       border-radius: 10px;
       img {
         width: 15%;
