@@ -1,6 +1,6 @@
 #settings-page{
-    margin-top: 8vh;
-    min-height: 63vh;
+    margin-top: 4rem;
+    min-height: 31.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,21 +8,21 @@
     #setting-container{
         width: 60vw;
         border-radius: 20px;
-        padding: 1vh 1vw;
+        padding: 0.5rem 1vw;
         background-color: var(--main-blue);
         color: white;
         display: grid;
         grid-template-columns: 50% 50%;
         // grid-template-rows: 18.75% 18.75% 18.75% 18.75% 25%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1.5fr;
-        height: 55vh;
+        height: 27.5rem;
 
         button{
             border-radius: 10px;
             border: 2px solid black;
-            margin: 1vh 0vw;
+            margin: 0.5rem 0vw;
             width: 70%;
-            height: 15%;
+            height: 3rem;
             background-color: white;
             &:hover{
                scale: 1.05;
@@ -37,8 +37,7 @@
             grid-row-start: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            font-size: 4vh;
+            font-size: 2rem;
             height: 100%;
         }
         #logic{
@@ -58,14 +57,14 @@
                 }
     
                 input{
-                    padding: 0.5vh 0.5vw;
+                    padding: 0.25rem 0.5vw;
                     border-radius: 10px;
                 }
                 
                 button{
-                    margin-top: 4vh;
+                    margin-top: 2rem;
                     width: 50%;
-                    height: 15%;
+                    height: 2.5rem;
                 }
     
             }
@@ -75,7 +74,6 @@
             grid-row-start: 1;
             grid-row-end: 5;
             display: flex;
-            justify-content: center;
             align-items: center;
             flex-direction: column;
             
@@ -106,9 +104,9 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            height: 20vh;
+            height: 10rem;
             position: relative;
-            top: -30vh;
+            top: -15rem;
             right: -30vw;
             background-color: white;
             border-radius: 20px;
@@ -120,7 +118,7 @@
             
 
             button{
-                margin-top: 3vh;
+                margin-top: 1.5rem;
                 height: 30%;
                 color: red;
                 background-color: rgb(248, 210, 210);
@@ -152,10 +150,10 @@
 
 @media (max-width: 950px){
     #settings-page{
-        margin-top: 12vh;
+        margin-top: 6rem;
 
         #setting-container{
-            height: 60vh;
+            height: 30rem;
             width: 80vw;
 
             
@@ -166,11 +164,11 @@
 
 @media (max-width: 700px){
     #settings-page{
-        margin-top: 12vh;
+        margin-top: 6rem;
         height: auto;
 
         #setting-container{
-            height: 100vh;
+            height: auto;
             width: 80vw;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -181,13 +179,16 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                font-size: 4vh;
+                font-size: 2rem;
             }
             #functions{
                 grid-column-start: 1;
                 grid-row-start: 2;
                 grid-row-end: 5;
-                
+                height: auto;
+                button{
+                    height: 2.5rem;
+                }
     
             }
 
@@ -203,13 +204,13 @@
             }
 
             #delete-container{
-                height: 20vh;
-                top: -40vh;
+                height: 10rem;
+                top: -20rem;
                 right: 0vw;
                 
     
                 button{
-                    margin-top: 3vh;
+                    margin-top: 1.5rem;
                     height: 30%;
     
                     &:hover{

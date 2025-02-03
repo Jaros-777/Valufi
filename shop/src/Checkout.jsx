@@ -44,13 +44,13 @@ function Checkout() {
     if (hour < 10) {
       orderDate += "0";
     }
-    
+
     orderDate += hour + ":";
     const minute = newDate.getMinutes();
     if (minute < 10) {
       orderDate += "0";
     }
-    
+
     orderDate += minute;
 
     return orderDate;
@@ -76,7 +76,7 @@ function Checkout() {
     setCartList([]);
     setCartListTotal(0);
     navigate("/");
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
   };
 
   if (!user) {
@@ -112,19 +112,18 @@ function Checkout() {
           ) : (
             cartList.map((e) => (
               <div className="checkout-product" key={e.id}>
-                
-                  <div className="checkout-product-img">
-                    <img src={e.img} alt="img product" />
-                  </div>
-                  <div id="checkout-product-details">
-                  <div className="checkout-product-center">
-                    <p>{e.count} x</p>
-                    <p style={{ margin: "0vh 1vw" }}>{e.name}</p>
-                  </div>
-                  <div id="product-price">
-                    <p>{(e.price/100).toFixed(2)}$/ pcs</p>
-                    <p>Total: {((e.price/100).toFixed(2) * e.count).toFixed(2)}$</p>
-                  </div>
+                <div className="checkout-product-img">
+                  <img src={e.img} alt="img product" />
+                </div>
+                <div id="checkout-product-details">
+                  <p style={{ margin: "0vh 1vw" }}>{e.name}</p>
+                </div>
+                <div id="product-price">
+                  <p>{e.count} x</p>
+                  <p>{(e.price / 100).toFixed(2)}$/ pcs</p>
+                  <p>
+                    Total: {((e.price / 100).toFixed(2) * e.count).toFixed(2)}$
+                  </p>
                 </div>
               </div>
             ))
@@ -196,7 +195,7 @@ function Checkout() {
         <div id="checkout-details-container">
           <div className="checkout-details">
             <p>Value of products:</p>
-            <p>{(cartListTotal/100).toFixed(2)} $</p>
+            <p>{(cartListTotal / 100).toFixed(2)} $</p>
           </div>
           <div className="checkout-details">
             <p>Delivery:</p>
@@ -209,8 +208,10 @@ function Checkout() {
           <div className="checkout-details">
             <p>Summary</p>
             <p>
-              {((parseFloat((cartListTotal/100).toFixed(2)) +
-                parseFloat(currentDelivery === "InpostCourier" ? 3 : 2)).toFixed(2))}{" "}
+              {(
+                parseFloat((cartListTotal / 100).toFixed(2)) +
+                parseFloat(currentDelivery === "InpostCourier" ? 3 : 2)
+              ).toFixed(2)}{" "}
               $
             </p>
           </div>
