@@ -1,4 +1,4 @@
-Valufi  
+# Valufi  
 https://valufi.netlify.app/  
 This is a demo web store based on React.js, SaaS and Supabase. It uses authentication and authorization, as well as saving the user's current session to LocalStorage for additional security.  
 
