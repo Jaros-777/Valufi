@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { pageContext } from "../App";
 import ChangePass from "./Operations/ChangePass";
 import ChangeEmail from "./Operations/ChangeEmail";
-import ChangeInformations from "./Operations/Changeinformations";
+import ChangeInformations from "./Operations/ChangeInformations";
 import { useNavigate } from "react-router-dom";
 
 function Settings() {
