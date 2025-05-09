@@ -1,6 +1,6 @@
 import Logo from "./NavBar/Assets/VALUFI.png"
-import FacebookLogo from "./Assets/icon-facebook.png"
-import InstagramLogo from "./Assets/icon-instagram.png"
+import FacebookLogo from "./assets/icon-facebook.png"
+import InstagramLogo from "./assets/icon-instagram.png"
 import "./Footer.scss"
 
 function Footer(){
