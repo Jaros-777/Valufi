@@ -1,7 +1,7 @@
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer";
 import "./Settings.scss";
-import { supabaseAdmin } from "../supabaseClient";
+// import { supabaseAdmin } from "../supabaseClient";
 import { useContext, useEffect, useState } from "react";
 import { pageContext } from "../App";
 import ChangePass from "./Operations/ChangePass";
@@ -41,8 +41,8 @@ function Settings() {
   }
   const deleteAccount = async () => {
     try {
-      const { error } = await supabaseAdmin.auth.admin.deleteUser(user.userId);
-      if(error) throw error;
+      // const { error } = await supabaseAdmin.auth.admin.deleteUser(user.userId);
+      // if(error) throw error;
 
       setIsLogged(false);
       localStorage.removeItem("userToken");
