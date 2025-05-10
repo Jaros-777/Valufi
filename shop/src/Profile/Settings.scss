@@ -1,6 +1,6 @@
 #settings-page{
     margin-top: 4rem;
-    min-height: 31.5rem;
+    min-height: 32rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +16,7 @@
         // grid-template-rows: 18.75% 18.75% 18.75% 18.75% 25%;
         grid-template-rows: 1fr 1fr 1fr 1fr 1.5fr;
         height: 27.5rem;
+        position: relative;
 
         button{
             border-radius: 10px;
@@ -105,9 +106,9 @@
             align-items: center;
             flex-direction: column;
             height: 10rem;
-            position: relative;
-            top: -15rem;
-            right: -30vw;
+            position: absolute;
+            top: 5rem;
+            right: 1rem;
             background-color: white;
             border-radius: 20px;
             padding: 4vh 1vw 1vh 1vw;
@@ -205,8 +206,7 @@
 
             #delete-container{
                 height: 10rem;
-                top: -20rem;
-                right: 0vw;
+                top: 5rem;
                 
     
                 button{
@@ -227,4 +227,11 @@
 @media (max-width: 600px){
     #settings-page{
         margin-top: 10vh;
+        #setting-container{
+            
+            #delete-container{
+                right: 0rem;
+    
+            }
+        }
     }}

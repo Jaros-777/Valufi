@@ -97,6 +97,7 @@ function Settings() {
                 X
               </button>
               <p>Are you sure you want to delete your account?</p>
+              <p>Account will be removed within  30 days</p>
               <button onClick={deleteAccount}>Confirm</button>
             </div>
           </div>
