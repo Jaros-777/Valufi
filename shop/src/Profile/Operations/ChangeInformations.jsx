@@ -10,48 +10,49 @@ function ChangeInformations() {
   const [houseNumber, setHouseNumber] = useState("");
   const [flatNumber, setFlatNumber] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [telephoneError, setTelphoneError] = useState(false)
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   //town, street, houseNumber, telephone
 
-  
-
-  useEffect(()=>{
-    if(user){
+  useEffect(() => {
+    if (user) {
       setTown(user.details.address.town || "");
       setStreet(user.details.address.street || "");
       setHouseNumber(user.details.address.houseNumber || "");
       setTelephone(user.details.telephone || "");
     }
-  },[user])
-
-  
+  }, [user]);
 
   const changeUserDetails = async () => {
-    const newDetail = {
-      address: {
-        town: town,
-        street: street,
-        houseNumber: houseNumber,
-        flatNumber: flatNumber,
-      },
-      telephone: telephone,
-    };
+    if (/^\d{9}$/.test(telephone)) {
+      setTelphoneError(false)
+      const newDetail = {
+        address: {
+          town: town,
+          street: street,
+          houseNumber: houseNumber,
+          flatNumber: flatNumber,
+        },
+        telephone: telephone,
+      };
 
-    try {
-      const { data, error } = await supabase
-        .from("ValufiUsersAccount")
-        .update([{ details: newDetail }])
-        .eq("userId", user.userId);
+      try {
+        const { data, error } = await supabase
+          .from("ValufiUsersAccount")
+          .update([{ details: newDetail }])
+          .eq("userId", user.userId);
 
-        navigate("/")
-        window.location.reload()
-    } catch (error) {
-      console.error("Error deleting user:", error);
+        navigate("/");
+        window.location.reload();
+      } catch (error) {
+        console.error("Error deleting user:", error);
+      }
+    }else{
+      setTelphoneError(true)
     }
+    
   };
-
- 
 
   if (!user) {
     return <p>Loading..</p>;
@@ -75,7 +76,6 @@ function ChangeInformations() {
           onChange={(e) => {
             setStreet(e.target.value);
           }}
-          
         />
         <p>House number</p>
         <input
@@ -84,9 +84,8 @@ function ChangeInformations() {
           onChange={(e) => {
             setHouseNumber(e.target.value);
           }}
-          
         />
-        <p>Telehpone</p>
+        <p style={telephoneError ? {backgroundColor:"red"} : null}>Telehpone</p>
         <input
           type="text"
           value={telephone}
