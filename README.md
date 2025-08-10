@@ -1,5 +1,5 @@
 # 🛒 Valufi  
-### **[Go to page](https://valufi.netlify.app/)**  
+### **[LIVE DEMO](https://valufi.netlify.app/)**  
 ### **Valufi** is a demo e-commerce platform built with **React.js** and **Supabase**. This project showcases the essential features of an online store, including user authentication, product search, shopping cart management, and user feedback.
 
 It is primarily created for demonstration purposes to showcase the functionality and technical skills behind building a basic e-commerce application. This platform is **not intended for commercial use** as it lacks payment system integration.
